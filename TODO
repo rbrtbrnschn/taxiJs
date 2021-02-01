@@ -10,8 +10,9 @@ Todo:
   ✔ format, @started(21-02-01 17:47) @done(21-02-01 17:49) @lasted(2m9s)
   ✔ refactor, @started(21-02-01 17:49) @done(21-02-01 18:13) @lasted(24m30s)
   ✔ *css*, @done(21-02-01 19:41)
-  ☐ publish 
+  ✔ publish @done(21-02-01 19:59)
   ✔ add property to disable warning @started(21-02-01 19:28) @done(21-02-01 19:31) @lasted(3m41s)
+  ☐ Create gif for readme
   ☐ create classes for keydown/up (actioncodes) ala solid princ.
 Secondary:
   ☐ parse attributes on input.taxi method called in constructor
