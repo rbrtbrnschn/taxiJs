@@ -1,0 +1,58 @@
+/* * COLOR Basics */
+:root {
+  --white: #fff;
+  --black: #000;
+}
+/* * COLOR Palette Synthwave */
+:root {
+  --synthwave-yellow: rgb(255,211,25);
+  --synthwave-orange: rgb(255,144,31);
+  --synthwave-red: rgb(255,41,117);
+  --synthwave-pink: rgb(242,34,255);
+  --synthwave-purple: rgb(140,30,255);
+}
+/* * Theming */
+:root {
+  --bg-1: var(--white);
+  --bg-2: var(--grey1);
+  --text-1: var(--black);
+  --text-2: var(--grey6);
+}
+/* * Layout */
+:root {
+  --border-radius: 15px;
+}
+
+/* * Default Input Theme*/
+input.taxi {
+  width: 100%;
+  font-size: 1.5rem;
+  height: 2rem;
+  background: var(--bg-1);
+  box-sizing: border-box;
+  padding: .3rem;
+  border-radius: var(--border-radius);
+}
+input.taxi:focus {
+  outline: none;
+
+}
+
+/* * Synthwave Input Theme */
+/* Feel Free To Add Themes And Do This Properly*/
+
+/* * Default Taxi Theme */
+taxi .taxi-card{
+  background: #f0f0f0;
+  color: #000;
+  font-size: 2rem;
+  border: none;
+}
+
+taxi .taxi-card:hover {
+  box-shadow: inset 0 0 100px 100px rgba(0,0,0,0.1);
+}
+taxi .is-selected {
+  background: #000;
+  color: #fff;
+}
