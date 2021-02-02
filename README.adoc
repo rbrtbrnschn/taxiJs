@@ -5,6 +5,8 @@ image::./logo.png[width=25%]
 Extensible and modular auto-complete library for js, for ease of use.
 Further modification stated in the link:TODO[todolist].
 
+= Demo
+
 image::./img/taxijs.gif[width=100%]
 To visit the demo page, please visit https://taxijs.rbrtbrnschn.dev .
 
