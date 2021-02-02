@@ -13,7 +13,7 @@ Todo:
   ✔ publish @done(21-02-01 19:59)
   ✔ add property to disable warning @started(21-02-01 19:28) @done(21-02-01 19:31) @lasted(3m41s)
   ✔ Create gif for readme @done(21-02-02 17:24)
-  ☐ Add on click events
+  ✔ Add on click events @started(21-02-02 17:45) @done(21-02-02 17:53) @lasted(8m20s)
   ☐ create classes for keydown/up (actioncodes) ala solid princ.
   ☐ add availability for addons/extensions that run within eventHandlers
 Secondary:

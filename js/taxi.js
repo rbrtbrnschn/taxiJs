@@ -26,12 +26,12 @@
  * @returns {String} - html string
  */
 
- /**
-  * {@link HTMLElement}, holding the auto-complete html.
-  * @name HTMLTaxiElement
-  * @type {HTMLElement}
-  * 
-  */
+/**
+ * {@link HTMLElement}, holding the auto-complete html.
+ * @name HTMLTaxiElement
+ * @type {HTMLElement}
+ *
+ */
 
 /**
  * Taxi instance, initializing eventlisteners for corresponding {@link HTMLInputElement} and {@link HTMLTaxiElement}.
@@ -71,7 +71,7 @@ class Taxi {
 
   /**
    * Holding builtin toHtml variants.
-   * @property {toHtml} classic - designed for {@link TaxiOptions}.data type of string[]. 
+   * @property {toHtml} classic - designed for {@link TaxiOptions}.data type of string[].
    */
   static ToHtml = Object.freeze({
     classic: (entry) => {
@@ -81,12 +81,12 @@ class Taxi {
     },
   });
 
-  /**
-   * 
-   * Default TaxiOptions, to be used incase of none given.
-   * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
-   * @property {query} query - {@link #taxiquery}
-   */
+  // /**
+  //  *
+  //  * Default TaxiOptions, to be used incase of none given.
+  //  * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
+  //  * @property {query} query - {@link #taxiquery}
+  //  */
   static #TaxiOptionsDefaults = Object.freeze({
     data: ["Volkwagen", "Mercedes", "Daimler"],
     query: Taxi.Query.strict,
@@ -146,6 +146,19 @@ class Taxi {
   }
 
   /**
+   * Adds onclick listeners.
+   * @returns {void}
+   */
+  #injectOnClicKListeners() {
+    [...this.taxi.children].map((c) => {
+      c.addEventListener("click", (e) => {
+        this.input.value = e.target.getAttribute("value");
+        this.taxi.innerHTML = "";
+      });
+    });
+  }
+
+  /**
    * Initializes eventlisteners.
    * @returns {void}
    */
@@ -192,6 +205,7 @@ class Taxi {
 
     /* Display */
     this.taxi.innerHTML = html;
+    this.#injectOnClicKListeners();
   }
 
   /**
