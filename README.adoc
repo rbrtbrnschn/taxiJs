@@ -6,13 +6,10 @@ Extensible and modular auto-complete library for js, for ease of use.
 Further modification stated in the link:TODO[todolist].
 
 image:https://img.shields.io/github/contributors/rbrtbrnschn/taxijs?color=yellow&style=for-the-badge[GitHub contributors]
-
 image:https://img.shields.io/github/issues-raw/rbrtbrnschn/taxiJs?color=white&style=for-the-badge[GitHub issues]
 image:https://img.shields.io/github/issues-closed-raw/rbrtbrnschn/taxiJs?color=white&style=for-the-badge[GitHub closed issues]
-
 image:https://img.shields.io/github/license/rbrtbrnschn/taxiJs?color=white&style=for-the-badge[GitHub]
-
-image:https://img.shields.io/badge/<Abc>-<Something>-<yellow>.svg[Custom]
+image:https://img.shields.io/badge/Prs-Welcome-yellow.svg?style=for-the-badge[Custom]
 
 = Demo
 
