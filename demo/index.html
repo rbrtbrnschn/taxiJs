@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ****** faviconit.com favicons ****** -->
+    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" />
+    <link
+      rel="icon"
+      sizes="16x16 32x32 64x64"
+      href="./assets/favicon/favicon.ico"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="196x196"
+      href="./assets/favicon/favicon-192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="160x160"
+      href="./assets/favicon/favicon-160.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicon/favicon-96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="64x64"
+      href="./assets/favicon/favicon-64.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16.png"
+    />
+    <link rel="apple-touch-icon" href="./assets/favicon/favicon-57.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./assets/favicon/favicon-114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./assets/favicon/favicon-72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./assets/favicon/favicon-144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./assets/favicon/favicon-60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./assets/favicon/favicon-120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/favicon/favicon-76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/favicon/favicon-152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/favicon-180.png"
+    />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta
+      name="msapplication-TileImage"
+      content="./assets/favicon/favicon-144.png"
+    />
+    <meta
+      name="msapplication-config"
+      content="./assets/favicon/browserconfig.xml"
+    />
+    <!-- ****** faviconit.com favicons ****** -->
+    <!-- ****** Taxi.js ****** -->
+    <script src="../js/taxi.js" defer></script>
+    <link rel="stylesheet" href="../css/taxi.css" />
+    <!-- ****** Taxi.js ****** -->
+    <!-- ****** Scripts & Stylesheets ****** -->
+    <script src="./script.js" type="module" defer></script>
+    <link rel="stylesheet" href="./main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      crossorigin="anonymous"
+    />
+    <!-- ****** Scripts & Stylesheets ****** -->
+    <title>taxi.js</title>
+  </head>
+  <body class="has-navbar-fixed-top" id="showcase">
+    <nav
+      class="navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://taxijs.rbrtbrnschn.dev">
+          <img
+            src="./assets/favicon/favicon-114.png"
+            style="transform: rotateY(-180deg)"
+          />
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="#showcase"> Home </a>
+
+          <a class="navbar-item" href="#setup"> Setup </a>
+
+          <a class="navbar-item" href="/docs"> Documentation </a>
+
+          <!-- <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More </a>
+            <div class="navbar-dropdown"></div>
+          </div> -->
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a
+              href="https://github.com/rbrtbrnschn/taxijs"
+              class="button is-dark is-outlined"
+              >Github</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Showcase -->
+    <div class="hero is-warning mb-5">
+      <div class="hero-body">
+        <div class="container">
+          <p class="title">Taxi.js</p>
+          <p class="subtitle">Extensible and modular auto-complete library for js.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input
+            type="text"
+            class="input taxi is-warning"
+            name="debug"
+            autofocus
+            placeholder="Write audi..."
+          />
+          <taxi class="is-overlay is-large" plate="debug"></taxi>
+        </div>
+        <div class="control">
+          <button class="button is-warning">Query</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Setup -->
+    <div class="container" id="setup">
+      <div class="hero has-light-text mt-5">
+        <div class="hero-body">
+          <div class="container">
+            <p class="title spaced">Setup</p>
+            <p class="subtitle">Importing the script and stylesheet.</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <img src="./assets/img/code/carbon.png  " alt="" srcset="" />
+      </div>
+
+      <!-- Adding Input -->
+      <div class="hero has-light-text mt-5">
+        <div class="hero-body">
+          <div class="container">
+            <p class="title">Adding the input field</p>
+            <p class="subtitle">And the taxi right below</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <img src="./assets/img/code/adding_input.png" alt="" srcset="" />
+      </div>
+      <!-- Initializing Taxi -->
+      <div class="hero has-light-text mt-5">
+        <div class="hero-body">
+          <div class="container">
+            <p class="title">Initializing the Taxi</p>
+            <p class="subtitle">in your js file</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <img src="./assets/img/code/initialize.png" alt="" srcset="" />
+      </div>
+    </div>
+
+    <div class="hero mt-5">
+      <div class="hero-body">
+        <div class="container">
+          <p class="title">Looking for documentation?</p>
+          <p class="subtitle">You can find that <a href="/docs">here</a>. Be sure to checkout the <a href="https://github.com/rbrtbrnschn/taxijs">Github Repo</a> too.</p>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <a href="https://github.com/rbrtbrnschn/taxijs">TaxiJs</a> built by <a href="https://github.com/rbrtbrnschn">Robert Bornschein</a>. Copyright 2021.
+      </div>
+    </footer>
+  </body>
+</html>
