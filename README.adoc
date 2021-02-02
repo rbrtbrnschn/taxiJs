@@ -1,9 +1,9 @@
 == Taxi.js
-image::./logo.png
+==
+image::./logo.png[width=25%]
 
 Extensible and modular auto-complete library for js, for ease of use.
-Further development stated in <a href="./TODO">TodoList</a>.
-
+Further modification stated in the link:TODO[todolist].
 
 == Setup
 
