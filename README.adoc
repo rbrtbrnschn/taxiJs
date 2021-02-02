@@ -15,4 +15,3 @@ image::./img/code/adding_input.png[width=100%]
 
 == Instantiate with custom options
 image::./img/code/initialize.png[width=100%]
-Define your options and instantiate your Taxi.
