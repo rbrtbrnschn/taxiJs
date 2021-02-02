@@ -1,4 +1,5 @@
-# Taxi.js
+== Taxi.js
+image::./logo.png
 
 Auto-complete library for js.
 
@@ -6,9 +7,10 @@ Extensible and modular, for ease of use.
 
 Further modification stated in <a href="./TODO">TodoList</a>.
 
-## Setup
 
-### HTML
+== Setup
+
+=== HTML
 Simply add the script to your html header.
 The stylesheet can be added, though is optional.
 ```html
@@ -25,7 +27,7 @@ The stylesheet can be added, though is optional.
   </body>
 ```
 
-### JS
+=== JS
 Define your options and instantiate your Taxi.
 
 ```js

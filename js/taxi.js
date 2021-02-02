@@ -2,14 +2,17 @@
 // let __AUTO_INITIALIZE = false; //@deprecated
 
 /**
+ * TaxiOptions interface, outlining all available options to give in, when instantiating a new {@link Taxi} instance.
  * @typedef {Object} TaxiOptions
  * @property {Array} data - data
- * @property {String} query - query mode
- * @property {(entry: any) => String} toHtml - html mapping method
+ * @property {query} query - query mode
+ * @property {toHtml} toHtml - html mapping method
  * @property {number} minChar - minimum amount of avaialble characters to show auto-complete
+ * @property {boolean} showWarnings - true by default
  */
 
 /**
+ * Method of querying given data. Takes in current dataset entry and the current input value.
  * @callback query
  * @param {*} record
  * @param  {String} value
@@ -17,7 +20,21 @@
  */
 
 /**
- * Taxi instance, initializing eventlisteners for corresponding input element.
+ * The {@link toHtml} method will be called for each data entry that has been queried for with the help of {@link query}.
+ * @callback toHtml
+ * @param {*} entry - each entry, that the data is mapping over
+ * @returns {String} - html string
+ */
+
+ /**
+  * {@link HTMLElement}, holding the auto-complete html.
+  * @name HTMLTaxiElement
+  * @type {HTMLElement}
+  * 
+  */
+
+/**
+ * Taxi instance, initializing eventlisteners for corresponding {@link HTMLInputElement} and {@link HTMLTaxiElement}.
  * @class Taxi
  */
 class Taxi {
@@ -25,6 +42,8 @@ class Taxi {
 
   /**
    * Holding numerous query filters.
+   * @property {query} strict - strict mode query by "exact" match
+   * @property {query} fuzzy - fuzzy search allowing for loose query
    */
   static Query = {
     strict: (record, query) =>
@@ -50,6 +69,10 @@ class Taxi {
     },
   };
 
+  /**
+   * Holding builtin toHtml variants.
+   * @property {toHtml} classic - designed for {@link TaxiOptions}.data type of string[]. 
+   */
   static ToHtml = Object.freeze({
     classic: (entry) => {
       return `<div class="taxi-card" value="${entry}">
@@ -57,8 +80,12 @@ class Taxi {
       </div>`;
     },
   });
+
   /**
+   * 
    * Default TaxiOptions, to be used incase of none given.
+   * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
+   * @property {query} query - {@link #taxiquery}
    */
   static #TaxiOptionsDefaults = Object.freeze({
     data: ["Volkwagen", "Mercedes", "Daimler"],
