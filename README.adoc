@@ -1,5 +1,5 @@
 == Taxi.js
-image::./logo.png
+image::./logo.png[width=25%]
 
 Auto-complete library for js.
 
