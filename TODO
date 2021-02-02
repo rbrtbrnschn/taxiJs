@@ -12,8 +12,10 @@ Todo:
   ✔ *css*, @done(21-02-01 19:41)
   ✔ publish @done(21-02-01 19:59)
   ✔ add property to disable warning @started(21-02-01 19:28) @done(21-02-01 19:31) @lasted(3m41s)
-  ☐ Create gif for readme
+  ✔ Create gif for readme @done(21-02-02 17:24)
+  ☐ Add on click events
   ☐ create classes for keydown/up (actioncodes) ala solid princ.
+  ☐ add availability for addons/extensions that run within eventHandlers
 Secondary:
   ☐ parse attributes on input.taxi method called in constructor
   ☐ add auto-taxi attribute for auto-initalization for debug / showcase purposes

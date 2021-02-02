@@ -26,6 +26,21 @@
 /* * Layout */
 :root {
   --border-radius: 0px;
+  --taxi-height: 100vh;
+}
+
+/* * Sizing */
+taxi.is-fullheight {
+  --taxi-height: 100vh;
+}
+taxi.is-large {
+  --taxi-height: 80vh;
+}
+taxi.is-medium{
+  --taxi-height: 60vh;
+}
+taxi.is-small{
+  --taxi-height: 20vh;
 }
 
 /* * Default Input Theme*/
@@ -47,12 +62,10 @@ taxi.is-overlay {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 2;
+  z-index: 10;
   margin-top: 2rem;
-  height: 100vh;
-  overflow: hidden;
-  overflow-y: scroll;
+  height: var(--taxi-height);
+  overflow: auto;
 }
 input.taxi:focus {
   outline: none;
