@@ -17,6 +17,8 @@ Todo:
   ✔ publish to npmjs @done(21-02-03 10:06)
   ✔ setup cdn @done(21-02-03 10:06)
   ✔ default theme(taxi-theme) | no longer assisted by bulma.io @started(21-02-03 10:06) @done(21-02-03 11:21) @lasted(1h15m26s)
+  ☐ add & configure webpack @started(21-02-03 14:55)
+  ☐ hopefully adding compatability for use in FF (16) and other browser
   ☐ create classes for keydown/up (actioncodes) ala solid princ.
   ☐ add availability for addons/extensions that run within eventHandlers
 Secondary:

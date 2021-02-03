@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "build": "babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,21 @@
   "bugs": {
     "url": "https://github.com/rbrtbrnschn/taxiJs/issues"
   },
-  "homepage": "https://taxiJs.rbrtbrnschn.dev"
+  "homepage": "https://taxiJs.rbrtbrnschn.dev",
+  "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-proposal-class-properties": "^7.12.13",
+    "@babel/plugin-proposal-private-methods": "^7.12.13",
+    "@babel/plugin-proposal-private-property-in-object": "^7.12.13",
+    "@babel/plugin-transform-classes": "^7.12.13",
+    "@babel/plugin-transform-regenerator": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
 }
