@@ -1,4 +1,4 @@
-![width=25%](./logo.png)
+![width=25%](./assets/imgage/readme/logo.png)
 
 Extensible and modular auto-complete library for js, for ease of use.
 Further modification stated in the [todolist](TODO).
@@ -13,7 +13,7 @@ issues](https://img.shields.io/github/issues-closed-raw/rbrtbrnschn/taxiJs?color
 ![Custom](https://img.shields.io/badge/Prs-Welcome-yellow.svg?style=for-the-badge)
 ![https://www.jsdelivr.com/package/npm/@rbrtbrnschn/taxi.js](https://data.jsdelivr.com/v1/package/npm/@rbrtbrnschn/taxi.js/badge)
 
-![width=100%](./img/taxijs.gif)
+![width=100%](./assets/img/readme/taxijs.gif)
 
 To visit the demo page, please visit <https://taxijs.rbrtbrnschn.dev> .
 
