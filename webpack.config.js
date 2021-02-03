@@ -15,10 +15,14 @@ module.exports = {
     extensions: ['*', '.js']
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, './dist/js'),
+    filename: 'Taxi.js',
   },
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
   },
+  optimization: {
+    minimize: false,
+  },
+  mode: "production"
 };

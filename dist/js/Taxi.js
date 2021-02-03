@@ -1,1 +1,436 @@
-(()=>{var t={228:t=>{t.exports=function(t,e){(null==e||e>t.length)&&(e=t.length);for(var r=0,n=new Array(e);r<e;r++)n[r]=t[r];return n}},646:(t,e,r)=>{var n=r(228);t.exports=function(t){if(Array.isArray(t))return n(t)}},926:t=>{function e(t,e,r,n,o,i,a){try{var s=t[i](a),c=s.value}catch(t){return void r(t)}s.done?e(c):Promise.resolve(c).then(n,o)}t.exports=function(t){return function(){var r=this,n=arguments;return new Promise((function(o,i){var a=t.apply(r,n);function s(t){e(a,o,i,s,c,"next",t)}function c(t){e(a,o,i,s,c,"throw",t)}s(void 0)}))}}},575:t=>{t.exports=function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}},913:t=>{function e(t,e){for(var r=0;r<e.length;r++){var n=e[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}t.exports=function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}},713:t=>{t.exports=function(t,e,r){return e in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}},860:t=>{t.exports=function(t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(t))return Array.from(t)}},206:t=>{t.exports=function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}},319:(t,e,r)=>{var n=r(646),o=r(860),i=r(379),a=r(206);t.exports=function(t){return n(t)||o(t)||i(t)||a()}},8:t=>{function e(r){return"function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?t.exports=e=function(t){return typeof t}:t.exports=e=function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},e(r)}t.exports=e},379:(t,e,r)=>{var n=r(228);t.exports=function(t,e){if(t){if("string"==typeof t)return n(t,e);var r=Object.prototype.toString.call(t).slice(8,-1);return"Object"===r&&t.constructor&&(r=t.constructor.name),"Map"===r||"Set"===r?Array.from(t):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(t,e):void 0}}},757:(t,e,r)=>{t.exports=r(666)},666:t=>{var e=function(t){"use strict";var e,r=Object.prototype,n=r.hasOwnProperty,o="function"==typeof Symbol?Symbol:{},i=o.iterator||"@@iterator",a=o.asyncIterator||"@@asyncIterator",s=o.toStringTag||"@@toStringTag";function c(t,e,r){return Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{c({},"")}catch(t){c=function(t,e,r){return t[e]=r}}function u(t,e,r,n){var o=e&&e.prototype instanceof d?e:d,i=Object.create(o.prototype),a=new P(n||[]);return i._invoke=function(t,e,r){var n=h;return function(o,i){if(n===p)throw new Error("Generator is already running");if(n===y){if("throw"===o)throw i;return C()}for(r.method=o,r.arg=i;;){var a=r.delegate;if(a){var s=E(a,r);if(s){if(s===v)continue;return s}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if(n===h)throw n=y,r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);n=p;var c=l(t,e,r);if("normal"===c.type){if(n=r.done?y:f,c.arg===v)continue;return{value:c.arg,done:r.done}}"throw"===c.type&&(n=y,r.method="throw",r.arg=c.arg)}}}(t,r,a),i}function l(t,e,r){try{return{type:"normal",arg:t.call(e,r)}}catch(t){return{type:"throw",arg:t}}}t.wrap=u;var h="suspendedStart",f="suspendedYield",p="executing",y="completed",v={};function d(){}function g(){}function m(){}var w={};w[i]=function(){return this};var b=Object.getPrototypeOf,x=b&&b(b(S([])));x&&x!==r&&n.call(x,i)&&(w=x);var O=m.prototype=d.prototype=Object.create(w);function L(t){["next","throw","return"].forEach((function(e){c(t,e,(function(t){return this._invoke(e,t)}))}))}function j(t,e){function r(o,i,a,s){var c=l(t[o],t,i);if("throw"!==c.type){var u=c.arg,h=u.value;return h&&"object"==typeof h&&n.call(h,"__await")?e.resolve(h.__await).then((function(t){r("next",t,a,s)}),(function(t){r("throw",t,a,s)})):e.resolve(h).then((function(t){u.value=t,a(u)}),(function(t){return r("throw",t,a,s)}))}s(c.arg)}var o;this._invoke=function(t,n){function i(){return new e((function(e,o){r(t,n,e,o)}))}return o=o?o.then(i,i):i()}}function E(t,r){var n=t.iterator[r.method];if(n===e){if(r.delegate=null,"throw"===r.method){if(t.iterator.return&&(r.method="return",r.arg=e,E(t,r),"throw"===r.method))return v;r.method="throw",r.arg=new TypeError("The iterator does not provide a 'throw' method")}return v}var o=l(n,t.iterator,r.arg);if("throw"===o.type)return r.method="throw",r.arg=o.arg,r.delegate=null,v;var i=o.arg;return i?i.done?(r[t.resultName]=i.value,r.next=t.nextLoc,"return"!==r.method&&(r.method="next",r.arg=e),r.delegate=null,v):i:(r.method="throw",r.arg=new TypeError("iterator result is not an object"),r.delegate=null,v)}function k(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function T(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function P(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(k,this),this.reset(!0)}function S(t){if(t){var r=t[i];if(r)return r.call(t);if("function"==typeof t.next)return t;if(!isNaN(t.length)){var o=-1,a=function r(){for(;++o<t.length;)if(n.call(t,o))return r.value=t[o],r.done=!1,r;return r.value=e,r.done=!0,r};return a.next=a}}return{next:C}}function C(){return{value:e,done:!0}}return g.prototype=O.constructor=m,m.constructor=g,g.displayName=c(m,s,"GeneratorFunction"),t.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===g||"GeneratorFunction"===(e.displayName||e.name))},t.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,m):(t.__proto__=m,c(t,s,"GeneratorFunction")),t.prototype=Object.create(O),t},t.awrap=function(t){return{__await:t}},L(j.prototype),j.prototype[a]=function(){return this},t.AsyncIterator=j,t.async=function(e,r,n,o,i){void 0===i&&(i=Promise);var a=new j(u(e,r,n,o),i);return t.isGeneratorFunction(r)?a:a.next().then((function(t){return t.done?t.value:a.next()}))},L(O),c(O,s,"Generator"),O[i]=function(){return this},O.toString=function(){return"[object Generator]"},t.keys=function(t){var e=[];for(var r in t)e.push(r);return e.reverse(),function r(){for(;e.length;){var n=e.pop();if(n in t)return r.value=n,r.done=!1,r}return r.done=!0,r}},t.values=S,P.prototype={constructor:P,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=e,this.done=!1,this.delegate=null,this.method="next",this.arg=e,this.tryEntries.forEach(T),!t)for(var r in this)"t"===r.charAt(0)&&n.call(this,r)&&!isNaN(+r.slice(1))&&(this[r]=e)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(t){if(this.done)throw t;var r=this;function o(n,o){return s.type="throw",s.arg=t,r.next=n,o&&(r.method="next",r.arg=e),!!o}for(var i=this.tryEntries.length-1;i>=0;--i){var a=this.tryEntries[i],s=a.completion;if("root"===a.tryLoc)return o("end");if(a.tryLoc<=this.prev){var c=n.call(a,"catchLoc"),u=n.call(a,"finallyLoc");if(c&&u){if(this.prev<a.catchLoc)return o(a.catchLoc,!0);if(this.prev<a.finallyLoc)return o(a.finallyLoc)}else if(c){if(this.prev<a.catchLoc)return o(a.catchLoc,!0)}else{if(!u)throw new Error("try statement without catch or finally");if(this.prev<a.finallyLoc)return o(a.finallyLoc)}}}},abrupt:function(t,e){for(var r=this.tryEntries.length-1;r>=0;--r){var o=this.tryEntries[r];if(o.tryLoc<=this.prev&&n.call(o,"finallyLoc")&&this.prev<o.finallyLoc){var i=o;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=e&&e<=i.finallyLoc&&(i=null);var a=i?i.completion:{};return a.type=t,a.arg=e,i?(this.method="next",this.next=i.finallyLoc,v):this.complete(a)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),v},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),T(r),v}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var r=this.tryEntries[e];if(r.tryLoc===t){var n=r.completion;if("throw"===n.type){var o=n.arg;T(r)}return o}}throw new Error("illegal catch attempt")},delegateYield:function(t,r,n){return this.delegate={iterator:S(t),resultName:r,nextLoc:n},"next"===this.method&&(this.arg=e),v}},t}(t.exports);try{regeneratorRuntime=e}catch(t){Function("r","regeneratorRuntime = r")(e)}}},e={};function r(n){if(e[n])return e[n].exports;var o=e[n]={exports:{}};return t[n](o,o.exports,r),o.exports}r.n=t=>{var e=t&&t.__esModule?()=>t.default:()=>t;return r.d(e,{a:e}),e},r.d=(t,e)=>{for(var n in e)r.o(e,n)&&!r.o(t,n)&&Object.defineProperty(t,n,{enumerable:!0,get:e[n]})},r.o=(t,e)=>Object.prototype.hasOwnProperty.call(t,e),(()=>{"use strict";var t=r(8),e=r.n(t),n=r(319),o=r.n(n),i=r(757),a=r.n(i),s=r(926),c=r.n(s),u=r(575),l=r.n(u),h=r(913),f=r.n(h),p=r(713),y=r.n(p);function v(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,n)}return r}function d(t,e,r){if(t!==e)throw new TypeError("Private static access of wrong provenance");return r.get?r.get.call(t):r.value}var g=new WeakSet,m=function(){function t(e,r,n){l()(this,t),g.add(this),this.input=e,this.taxi=r,this.input.taxi=this,this.actionCodes=[40,38,9,13],this.injectTaxiOptions(n),this.setData=this.setData.bind(this),this.setFilter=this.setFilter.bind(this),this.setQuery=this.setQuery.bind(this),this.setToHtml=this.setToHtml.bind(this),this.initEventlisteners()}var r;return f()(t,[{key:"injectTaxiOptions",value:function(e){var r=function(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?v(Object(r),!0).forEach((function(e){y()(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):v(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}({},d(t,t,w));e&&Object.keys(e).forEach((function(t){r[t]=e[t]})),this.options=r}},{key:"initEventlisteners",value:(r=c()(a().mark((function t(){var e=this;return a().wrap((function(t){for(;;)switch(t.prev=t.next){case 0:this.input.addEventListener("keydown",(function(t){return e.handleKeyDown(t)})),this.input.addEventListener("keyup",(function(t){return e.handleKeyUp(t)}));case 2:case"end":return t.stop()}}),t,this)}))),function(){return r.apply(this,arguments)})},{key:"hasMinChar",value:function(t){return!this.options.minChar||t.target.value.trim().length>=this.options.minChar}},{key:"handleKeyUp",value:function(t){var e=this;if(this.hasMinChar(t)){var r=t.which,n=t.target.value;if(!this.actionCodes.includes(r)){var i=o()(this.options.data).filter((function(t){return e.options.query(t,n)})).map((function(t){return e.options.toHtml(t)})).join("\n");this.taxi.innerHTML=i,function(t,e,r){if(!e.has(t))throw new TypeError("attempted to get private field on non-instance");return r}(this,g,x).call(this)}}else this.taxi.innerHTML=""}},{key:"handleKeyDown",value:function(t){if(this.hasMinChar(t)){if(this.actionCodes.includes(t.which)){t.preventDefault();var e=this.taxi.children,r=e.length,n=this.taxi.querySelector(".is-selected");this.taxi.querySelectorAll(".is-selected").forEach((function(t){return t.classList.toggle("is-selected")}));var i=o()(e).indexOf(n),a=i+1<r?i+1:i,s=i-1>0?i-1:0;switch(t.which){case 40:e[a].classList.toggle("is-selected");break;case 38:e[s].classList.toggle("is-selected");break;case 9:e[a].classList.toggle("is-selected");break;case 13:if(!n)return;this.input.value=n.getAttribute("value"),this.taxi.innerHTML=""}}}else this.taxi.innerHTML=""}},{key:"setData",value:function(t){this.options.showWarnings&&t.length&&null==t[0].length&&console.warn("When using objects-like, be sure to it's unwise to use default `options.toHtml` and `options.query` "),this.options.data=t}},{key:"setFilter",value:function(t){this.options.filter=t}},{key:"setQuery",value:function(e){var r=!(Object.values(t.Query).indexOf(e)>=0);this.options.showWarnings&&r&&console.warn("You are using a custom query.\nTo use our selection of recommended query options, be sure to checkout the documentation here: https://taxiJs.rbrtbrnschn.dev."),this.options.query=e}},{key:"setToHtml",value:function(t){this.options.toHtml=t}},{key:"setMinChar",value:function(e){this.options.showWarnings&&e>d(t,t,b).minChar&&console.warn("You are not using the recommended range of minimum characters.\nRecommended range: 0 - ".concat(d(t,t,b).minChar)),this.options.minChar=e}},{key:"setWarnings",value:function(t){e()(t)==Boolean&&(this.options.showWarnings=t)}}]),t}();y()(m,"Query",{strict:function(t,e){return t.toLowerCase().includes(e.toLowerCase())},fuzzy:function(t,e){var r=t.toLowerCase();e=e.toLowerCase().replace(/ /g,"");for(var n=[],o=0,i=0;i<r.length;i++){var a=t[i];o<e.length&&r[i]===e[o]&&o++,n.push(a)}if(o===e.length)return n.join("")}}),y()(m,"ToHtml",Object.freeze({classic:function(t){return'<div class="taxi-card" value="'.concat(t,'">\n        <strong>').concat(t,"</strong>\n      </div>")}}));var w={writable:!0,value:Object.freeze({data:["Volkwagen","Mercedes","Daimler"],query:m.Query.strict,toHtml:m.ToHtml.classic,minChar:1,showWarnings:!0})},b={writable:!0,value:Object.freeze({minChar:5})},x=function(){var t=this;o()(this.taxi.children).map((function(e){e.addEventListener("click",(function(e){t.input.value=e.target.getAttribute("value"),t.taxi.innerHTML=""}))}))}})()})();
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
+
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _classPrivateMethodGet(receiver, privateSet, fn) { if (!privateSet.has(receiver)) { throw new TypeError("attempted to get private field on non-instance"); } return fn; }
+
+function _classStaticPrivateFieldSpecGet(receiver, classConstructor, descriptor) { if (receiver !== classConstructor) { throw new TypeError("Private static access of wrong provenance"); } if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+
+var _injectOnClicKListeners = new WeakSet();
+
+/* GLOBALS */
+// let __AUTO_INITIALIZE = false; //@deprecated
+
+/**
+ * TaxiOptions interface, outlining all available options to give in, when instantiating a new {@link Taxi} instance.
+ * @typedef {Object} TaxiOptions
+ * @property {Array} data - data
+ * @property {query} query - query mode
+ * @property {toHtml} toHtml - html mapping method
+ * @property {number} minChar - minimum amount of avaialble characters to show auto-complete
+ * @property {boolean} showWarnings - true by default
+ */
+
+/**
+ * Method of querying given data. Takes in current dataset entry and the current input value.
+ * @callback query
+ * @param {*} record
+ * @param  {String} value
+ * @returns {boolean}
+ */
+
+/**
+ * The {@link toHtml} method will be called for each data entry that has been queried for with the help of {@link query}.
+ * @callback toHtml
+ * @param {*} entry - each entry, that the data is mapping over
+ * @returns {String} - html string
+ */
+
+/**
+ * {@link HTMLElement}, holding the auto-complete html.
+ * @name HTMLTaxiElement
+ * @type {HTMLElement}
+ *
+ */
+
+/**
+ * Taxi instance, initializing eventlisteners for corresponding {@link HTMLInputElement} and {@link HTMLTaxiElement}.
+ * @class Taxi
+ */
+var Taxi = /*#__PURE__*/function () {
+  /* Statics */
+
+  /**
+   * Holding numerous query filters.
+   * @property {query} strict - strict mode query by "exact" match
+   * @property {query} fuzzy - fuzzy search allowing for loose query
+   */
+
+  /**
+   * Holding builtin toHtml variants.
+   * @property {toHtml} classic - designed for {@link TaxiOptions}.data type of string[].
+   */
+  // /**
+  //  *
+  //  * Default TaxiOptions, to be used incase of none given.
+  //  * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
+  //  * @property {query} query - {@link #taxiquery}
+  //  */
+
+  /**
+   * @param {HTMLInputElement} input - input element
+   * @param {HTMLElement} taxi - taxi element
+   * @param {TaxiOptions} [options] - optional settings by {@link TaxiOptions}
+   */
+  function Taxi(input, taxi, options) {
+    (0, _classCallCheck2.default)(this, Taxi);
+
+    _injectOnClicKListeners.add(this);
+
+    /* Property initialization by paramterers */
+    this.input = input;
+    this.taxi = taxi;
+    /* Further property initialization */
+
+    this.input.taxi = this;
+    this.actionCodes = [40, 38, 9, 13];
+    /* Validate options */
+
+    this.injectTaxiOptions(options);
+    /* Public Methods */
+
+    this.setData = this.setData.bind(this);
+    this.setFilter = this.setFilter.bind(this);
+    this.setQuery = this.setQuery.bind(this);
+    this.setToHtml = this.setToHtml.bind(this);
+    /* Initialization */
+
+    this.initEventlisteners();
+  }
+  /**
+   * Inject default {@link TaxiOptions} and modify if needed.
+   * @param {TaxiOptions} [options]
+   */
+
+
+  (0, _createClass2.default)(Taxi, [{
+    key: "injectTaxiOptions",
+    value: function injectTaxiOptions(options) {
+      /* Grab defaults */
+      var injectedOptions = _objectSpread({}, _classStaticPrivateFieldSpecGet(Taxi, Taxi, _TaxiOptionsDefaults));
+      /* Grab user changes */
+
+
+      if (options) {
+        Object.keys(options).forEach(function (key) {
+          injectedOptions[key] = options[key];
+        });
+      }
+      /* Inject */
+
+
+      this.options = injectedOptions;
+    }
+    /**
+     * Adds onclick listeners.
+     * @returns {void}
+     */
+
+  }, {
+    key: "initEventlisteners",
+    value:
+    /**
+     * Initializes eventlisteners.
+     * @returns {void}
+     */
+    function () {
+      var _initEventlisteners = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var _this = this;
+
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.input.addEventListener("keydown", function (e) {
+                  return _this.handleKeyDown(e);
+                });
+                this.input.addEventListener("keyup", function (e) {
+                  return _this.handleKeyUp(e);
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function initEventlisteners() {
+        return _initEventlisteners.apply(this, arguments);
+      }
+
+      return initEventlisteners;
+    }()
+    /**
+     * Validates minimum amount of characters present.
+     * @param {Event} e - input Element
+     * @returns {boolean} boolean
+     */
+
+  }, {
+    key: "hasMinChar",
+    value: function hasMinChar(e) {
+      if (!this.options.minChar) return true; // @deprecated
+
+      if (e.target.value.trim().length >= this.options.minChar) return true;
+      return false;
+    }
+    /**
+     * Handles "keyup" event, meaning only text-input related actions.
+     * Handles auto-complete, meaing data-filtering.
+     * @param {Event} e
+     */
+
+  }, {
+    key: "handleKeyUp",
+    value: function handleKeyUp(e) {
+      var _this2 = this;
+
+      /* Validate minChar */
+      if (!this.hasMinChar(e)) {
+        this.taxi.innerHTML = "";
+        return;
+      }
+      /* Get variables */
+
+
+      var which = e.which;
+      var value = e.target.value;
+      /* Validate keyCode */
+
+      var isActionCode = this.actionCodes.includes(which);
+      if (isActionCode) return;
+      /* Get HTML  */
+
+      var copy = (0, _toConsumableArray2.default)(this.options.data);
+      var filtered = copy.filter(function (entry) {
+        return _this2.options.query(entry, value);
+      });
+      var html = filtered.map(function (entry) {
+        return _this2.options.toHtml(entry);
+      }).join("\n");
+      /* Display */
+
+      this.taxi.innerHTML = html;
+
+      _classPrivateMethodGet(this, _injectOnClicKListeners, _injectOnClicKListeners2).call(this);
+    }
+    /**
+     * Hanled "keydown" event, meaning only `non` text-input actions.
+     * Handled keycodes: `40, 38, 9`.
+     * @param {Event} e
+     */
+
+  }, {
+    key: "handleKeyDown",
+    value: function handleKeyDown(e) {
+      if (!this.hasMinChar(e)) {
+        this.taxi.innerHTML = "";
+        return;
+      }
+
+      var isActionCode = this.actionCodes.includes(e.which);
+      if (!isActionCode) return;
+      /* Prevent defaults */
+
+      e.preventDefault();
+      /* Get selected */
+
+      var children = this.taxi.children;
+      var max = children.length;
+      var selected = this.taxi.querySelector(".is-selected");
+      /* Clean up */
+
+      this.taxi.querySelectorAll(".is-selected").forEach(function (i) {
+        return i.classList.toggle("is-selected");
+      });
+      /* Indices */
+
+      var current = (0, _toConsumableArray2.default)(children).indexOf(selected);
+      var next = current + 1 < max ? current + 1 : current;
+      var prev = current - 1 > 0 ? current - 1 : 0;
+      /* Handle actions */
+
+      switch (e.which) {
+        case 40:
+          /* Down */
+          children[next].classList.toggle("is-selected");
+          break;
+
+        case 38:
+          // Up
+          children[prev].classList.toggle("is-selected");
+          break;
+
+        case 9:
+          // Tab => Down
+          children[next].classList.toggle("is-selected");
+          break;
+
+        case 13:
+          // Enter
+          if (!selected) return;
+          this.input.value = selected.getAttribute("value");
+          this.taxi.innerHTML = "";
+          break;
+
+        default:
+          break;
+      }
+    }
+    /* Public Functionality */
+
+    /* Option Setters */
+
+    /**
+     * Sets {@link TaxiOptions} data.
+     * @param {Array} data
+     */
+
+  }, {
+    key: "setData",
+    value: function setData(data) {
+      if (this.options.showWarnings && data.length && data[0].length == undefined) {
+        console.warn("When using objects-like, be sure to it's unwise to use default `options.toHtml` and `options.query` ");
+      }
+
+      this.options.data = data;
+    }
+    /**
+     * Sets {@link TaxiOptions} filter.
+     * @param {(value: String,entry) => boolean} filter - filter method
+     */
+
+  }, {
+    key: "setFilter",
+    value: function setFilter(filter) {
+      this.options.filter = filter;
+    }
+    /**
+     * Sets {@link TaxiOptions} query.
+     * @param {query} query
+     */
+
+  }, {
+    key: "setQuery",
+    value: function setQuery(query) {
+      var isCustom = !(Object.values(Taxi.Query).indexOf(query) >= 0);
+      if (this.options.showWarnings && isCustom) console.warn("You are using a custom query.\nTo use our selection of recommended query options, be sure to checkout the documentation here: https://taxiJs.rbrtbrnschn.dev.");
+      this.options.query = query;
+    }
+    /**
+     * Sets {@link TaxiOptions} toHtml.
+     * @param {(entry: any) => String} toHtml - html mapping method
+     */
+
+  }, {
+    key: "setToHtml",
+    value: function setToHtml(toHtml) {
+      this.options.toHtml = toHtml;
+    }
+    /**
+     * Sets {@link TaxiOptions} minChar property.
+     * @param {int} minChar
+     */
+
+  }, {
+    key: "setMinChar",
+    value: function setMinChar(minChar) {
+      if (this.options.showWarnings && minChar > _classStaticPrivateFieldSpecGet(Taxi, Taxi, _TaxiOptionsRecommended).minChar) {
+        console.warn("You are not using the recommended range of minimum characters.\nRecommended range: 0 - ".concat(_classStaticPrivateFieldSpecGet(Taxi, Taxi, _TaxiOptionsRecommended).minChar));
+      }
+
+      this.options.minChar = minChar;
+    }
+    /**
+     * Sets {@link TaxiOptions} showWarnings property.
+     * @param {boolean} boo
+     */
+
+  }, {
+    key: "setWarnings",
+    value: function setWarnings(boo) {
+      if ((0, _typeof2.default)(boo) == Boolean) {
+        this.options.showWarnings = boo;
+      }
+    }
+  }]);
+  return Taxi;
+}();
+
+(0, _defineProperty2.default)(Taxi, "Query", {
+  strict: function strict(record, query) {
+    return record.toLowerCase().includes(query.toLowerCase());
+  },
+  fuzzy: function fuzzy(record, query) {
+    var recordLowerCase = record.toLowerCase();
+    query = query.toLowerCase().replace(/ /g, "");
+    var match = [];
+    var searchPosition = 0;
+
+    for (var number = 0; number < recordLowerCase.length; number++) {
+      var recordChar = record[number];
+
+      if (searchPosition < query.length && recordLowerCase[number] === query[searchPosition]) {
+        searchPosition++;
+      }
+
+      match.push(recordChar);
+    }
+
+    if (searchPosition === query.length) {
+      return match.join("");
+    }
+  }
+});
+(0, _defineProperty2.default)(Taxi, "ToHtml", Object.freeze({
+  classic: function classic(entry) {
+    return "<div class=\"taxi-card\" value=\"".concat(entry, "\">\n        <strong>").concat(entry, "</strong>\n      </div>");
+  }
+}));
+var _TaxiOptionsDefaults = {
+  writable: true,
+  value: Object.freeze({
+    data: ["Volkwagen", "Mercedes", "Daimler"],
+    query: Taxi.Query.strict,
+    toHtml: Taxi.ToHtml.classic,
+    minChar: 1,
+    showWarnings: true
+  })
+};
+var _TaxiOptionsRecommended = {
+  writable: true,
+  value: Object.freeze({
+    minChar: 5
+  })
+};
+
+var _injectOnClicKListeners2 = function _injectOnClicKListeners2() {
+  var _this3 = this;
+
+  (0, _toConsumableArray2.default)(this.taxi.children).map(function (c) {
+    c.addEventListener("click", function (e) {
+      _this3.input.value = e.target.getAttribute("value");
+      _this3.taxi.innerHTML = "";
+    });
+  });
+};
