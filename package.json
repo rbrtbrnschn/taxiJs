@@ -1,13 +1,13 @@
 {
   "name": "@rbrtbrnschn/taxi.js",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Extensible and modular auto-complete library for js.",
   "type": "module",
   "main": "./js/Taxi.js",
   "directories": {
     "doc": "docs"
   },
-  "browserslist":">0.25%, not dead",
+  "browserslist": ">0.25%, not dead",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "build": "babel src -d dist",
