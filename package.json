@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "description": "Extensible and modular auto-complete library for js.",
   "type": "module",
-  "main": "./js/Taxi.js",
+  "main": "./dist/js/Taxi.js",
   "directories": {
     "doc": "docs"
   },
