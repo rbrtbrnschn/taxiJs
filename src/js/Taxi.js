@@ -85,9 +85,9 @@ class Taxi {
   //  *
   //  * Default TaxiOptions, to be used incase of none given.
   //  * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
-  //  * @property {query} query - {@link #taxiquery}
+  //  * @property {query} query - {@link taxiquery}
   //  */
-  static #TaxiOptionsDefaults = Object.freeze({
+  static TaxiOptionsDefaults = Object.freeze({
     data: ["Volkwagen", "Mercedes", "Daimler"],
     query: Taxi.Query.strict,
     toHtml: Taxi.ToHtml.classic,
@@ -95,7 +95,7 @@ class Taxi {
     showWarnings: true,
   });
 
-  static #TaxiOptionsRecommended = Object.freeze({
+  static TaxiOptionsRecommended = Object.freeze({
     minChar: 5,
   });
 
@@ -132,7 +132,7 @@ class Taxi {
    */
   injectTaxiOptions(options) {
     /* Grab defaults */
-    const injectedOptions = { ...Taxi.#TaxiOptionsDefaults };
+    const injectedOptions = { ...Taxi.TaxiOptionsDefaults };
 
     /* Grab user changes */
     if (options) {
@@ -149,7 +149,7 @@ class Taxi {
    * Adds onclick listeners.
    * @returns {void}
    */
-  #injectOnClicKListeners() {
+  injectOnClicKListeners() {
     [...this.taxi.children].map((c) => {
       c.addEventListener("click", (e) => {
         this.input.value = e.target.getAttribute("value");
@@ -205,7 +205,7 @@ class Taxi {
 
     /* Display */
     this.taxi.innerHTML = html;
-    this.#injectOnClicKListeners();
+    this.injectOnClicKListeners();
   }
 
   /**
@@ -320,11 +320,11 @@ class Taxi {
   setMinChar(minChar) {
     if (
       this.options.showWarnings &&
-      minChar > Taxi.#TaxiOptionsRecommended.minChar
+      minChar > Taxi.TaxiOptionsRecommended.minChar
     ) {
       console.warn(
         `You are not using the recommended range of minimum characters.\nRecommended range: 0 - ${
-          Taxi.#TaxiOptionsRecommended.minChar
+          Taxi.TaxiOptionsRecommended.minChar
         }`
       );
     }
