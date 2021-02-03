@@ -39,14 +39,14 @@ Via UNPKG
 Add scripts to the header
 =========================
 
-![width=100%](./img/code/carbon.png)
+![width=100%](./assets/img/demo/step-1.png)
 
 Add your input and taxi
 =======================
 
-![width=100%](./img/code/adding_input.png)
+![width=100%](./assets/img/demo/step-2.png)
 
 Instantiate with custom options
 ===============================
 
-![width=100%](./img/code/initialize.png)
+![width=100%](./assets/img/demo/step-3.png)
