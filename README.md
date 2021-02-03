@@ -1,4 +1,4 @@
-![width=25%](./assets/imgage/readme/logo.png)
+![width=25%](./assets/img/readme/logo.png)
 
 Extensible and modular auto-complete library for js, for ease of use.
 Further modification stated in the [todolist](TODO).
