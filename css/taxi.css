@@ -2,10 +2,12 @@
 :root {
   --white: #fff;
   --black: #000;
+  --black-shadow: rgba(0,0,0,0.1);
 }
 /* * TaxiJs Palette */
 :root {
   --taxi-yellow: rgb(255, 221, 87);
+  --taxi-yellow-shadow: rgba(255,221,87,0.3);
 }
 /* * COLOR Palette Synthwave */
 :root {
@@ -20,9 +22,11 @@
   --bg-1: var(--white);
   --bg-2: var(--grey1);
   --border-1: var(--taxi-yellow);
+  --border-shadow: var(--taxi-yellow-shadow);
   --text-1: var(--black);
   --text-2: var(--grey6);
 }
+
 /* * Layout */
 :root {
   --taxi-height: 100vh;
@@ -49,6 +53,7 @@ input.taxi {
   background: var(--bg-1);
   box-sizing: border-box;
   padding: 0.3rem;
+  border-color:var(--border-1);
 }
 /* * Centering direct children when --border-radius is set*/
 taxi div {
@@ -66,8 +71,11 @@ taxi.is-overlay {
   height: var(--taxi-height);
   overflow: auto;
 }
-input.taxi:focus {
-  outline: none;
+input.taxi:focus{
+  /* //TODO How to remove outline? */
+  outline: none !important;
+  box-shadow: 0 0 0 .125em var(--border-shadow);
+  border:1px solid var(--border-1);
 }
 
 /* * Synthwave Input Theme */
