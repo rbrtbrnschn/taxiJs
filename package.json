@@ -2,6 +2,7 @@
   "name": "@rbrtbrnschn/taxi.js",
   "version": "1.0.4",
   "description": "Extensible and modular auto-complete library for js.",
+  "type": "module",
   "main": "./js/Taxi.js",
   "directories": {
     "doc": "docs"
