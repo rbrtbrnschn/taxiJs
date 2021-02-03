@@ -21,13 +21,13 @@ To visit the demo page, please visit https://taxijs.rbrtbrnschn.dev .
 
 == CDN:
 
-////
+=== Via JsDelivr
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.0/js/Taxi.js" integrity="sha256-ANPi9jkf4VVHUw5e/hwb+fgz2WIdnUi5yPm72r4pJ9s=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.0/css/taxi.css" integrity="sha256-UhAuNe+k+nzfy9+MeQ3UFU9m/ILRc6dak410bCJYimk=" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.1/js/Taxi.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.1/css/taxi.css">>
 ```
-////
 
+=== Via UNPKG
 ```html
 <script src="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.1/js/Taxi.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.1/css/taxi.css">
