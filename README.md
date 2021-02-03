@@ -23,20 +23,18 @@ CDN:
 Via JsDelivr
 ------------
 
-\`\`\`html &lt;script
-src="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.1/js/Taxi.js"&gt;&lt;/script&gt;
-&lt;link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.1/css/taxi.css"&gt;&gt;
-\`\`\`
+```html 
+<script src="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.1/js/Taxi.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.1/css/taxi.css">
+```
 
 Via UNPKG
 ---------
 
-\`\`\`html &lt;script
-src="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.1/js/Taxi.js"&gt;&lt;/script&gt;
-&lt;link rel="stylesheet"
-href="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.1/css/taxi.css"&gt;
-\`\`\`
+```html 
+<script src="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.1/js/Taxi.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.1/css/taxi.css">;
+```
 
 Add scripts to the header
 =========================
