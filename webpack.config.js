@@ -1,4 +1,6 @@
 const path = require('path');
+const webpack = require("webpack");
+
 const defaults = {
   entry: path.resolve(__dirname, './src/main/js/Taxi.js'),
   module: {

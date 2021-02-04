@@ -1,4 +1,4 @@
-const Taxi = require("../../../dist/node/js/Taxi");
+const Taxi = require("../../../dist/node/js/Taxi.js");
 module.exports = function assert(expression, message) {
   const fallback = `${__filename} failed `;
   if(!message) message = fallback;
@@ -7,5 +7,3 @@ module.exports = function assert(expression, message) {
 
   throw new Error(message);
 }
-
-
