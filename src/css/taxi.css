@@ -68,7 +68,7 @@ taxi.is-overlay {
   width: 100%;
   z-index: 10;
   margin-top: 2rem;
-  height: var(--taxi-height);
+  max-height: var(--taxi-height);
   overflow: auto;
 }
 input.taxi:focus{
