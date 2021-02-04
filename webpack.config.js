@@ -1,6 +1,6 @@
 const path = require('path');
 const defaults = {
-  entry: path.resolve(__dirname, './src/js/Taxi.js'),
+  entry: path.resolve(__dirname, './src/main/js/Taxi.js'),
   module: {
     rules: [
       {
