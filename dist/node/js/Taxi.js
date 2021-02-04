@@ -1210,8 +1210,17 @@ var Taxi = /*#__PURE__*/function () {
                 this.input.addEventListener("keyup", function (e) {
                   return _this2.handleKeyUp(e);
                 });
+                this.input.addEventListener("focusin", function (e) {
+                  return _this2.taxi.style.visibility = "visible";
+                });
+                this.input.addEventListener("focusout", function (e) {
+                  var $nodeAtPointer = e.explicitOriginalTarget;
+                  var isChild = _this2.taxi.contains($nodeAtPointer) && _this2.taxi !== $nodeAtPointer;
+                  if (isChild) return;
+                  _this2.taxi.style.visibility = "hidden";
+                });
 
-              case 2:
+              case 4:
               case "end":
                 return _context.stop();
             }
