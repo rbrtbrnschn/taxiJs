@@ -32,7 +32,7 @@ import dataset2 from "./assets/data/dataset2.js";
   const _taxi = new Taxi(taxis[0], taxi, options);
 })();
 
-// Examples 1
+// Example 1
 (function () {
   // fuzzy search
   const $input = document.querySelector("input.taxi#taxi1");
@@ -46,7 +46,7 @@ import dataset2 from "./assets/data/dataset2.js";
   const _taxi = new Taxi($input, $taxi, options);
 })();
 
-// Examples 2
+// Example 2
 (function () {
   // custom html
   const $input = document.querySelector("input.taxi#taxi2");
@@ -72,7 +72,7 @@ import dataset2 from "./assets/data/dataset2.js";
   const _taxi = new Taxi($input, $taxi, options);
 })();
 
-// Examples 2
+// Example 3
 (function () {
   // custom html
   const $input = document.querySelector("input.taxi#taxi3");
