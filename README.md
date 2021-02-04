@@ -24,16 +24,16 @@ Via JsDelivr
 ------------
 
 ```html 
-<script src="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.4/js/Taxi.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.0.4/css/taxi.css">
+<script src="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.1.1/dist/web/js/Taxi.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@rbrtbrnschn/taxi.js@1.1.1/dist/css/taxi.css">
 ```
 
 Via UNPKG
 ---------
 
 ```html 
-<script src="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.4/js/Taxi.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/@rbrtbrnschn/taxi.js@1.0.4/css/taxi.css">;
+<script src="https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.1/js/Taxi.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.1/css/taxi.css">;
 ```
 
 Add scripts to the header
