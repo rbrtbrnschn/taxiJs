@@ -342,4 +342,4 @@ class Taxi {
   }
 }
 
-// export default Taxi;
+export default Taxi;
