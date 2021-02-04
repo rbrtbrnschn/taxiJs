@@ -12,8 +12,8 @@ import dataset2 from "./assets/data/dataset2.js";
   const options = {
     toHtml: (entry) => `
       <div class="taxi-card" value="${entry.make + " " + entry.model}">
-            <strong>Brand:</strong> ${entry.make} <br>
-            <strong>Model:</strong> ${entry.model} <br>
+            <strong value="${entry.make + " " + entry.model}">Brand:</strong> ${entry.make} <br>
+            <strong value="${entry.make + " " + entry.model}">Model:</strong> ${entry.model} <br>
       </div>`,
     data: data,
     minChar: 1,
@@ -58,10 +58,10 @@ import dataset2 from "./assets/data/dataset2.js";
     toHtml: (entry) => `
     <div class="card" value="${entry}" onclick="console.log(\`${entry}\`)">
   <div class="card-content" value="${entry}">
-    <p class="title">
+    <p class="title" value="${entry}">
       ${entry}
     </p>
-    <p class="subtitle">
+    <p class="subtitle" value="${entry}">
       Some person
     </p>
   </div>

@@ -1212,15 +1212,14 @@ var Taxi = /*#__PURE__*/function () {
                 });
                 this.input.addEventListener("focusin", function (e) {
                   return _this2.taxi.style.visibility = "visible";
-                });
-                this.input.addEventListener("focusout", function (e) {
-                  var $nodeAtPointer = e.explicitOriginalTarget;
-                  var isChild = _this2.taxi.contains($nodeAtPointer) && _this2.taxi !== $nodeAtPointer;
-                  if (isChild) return;
-                  _this2.taxi.style.visibility = "hidden";
-                });
+                }); // this.input.addEventListener("focusout", (e) => {
+                //   const $nodeAtPointer = e.explicitOriginalTarget;
+                //   const isChild = this.taxi.contains($nodeAtPointer) && this.taxi !== $nodeAtPointer;
+                //   if(isChild) return; 
+                //   this.taxi.style.visibility = "hidden";
+                // })
 
-              case 4:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -1461,7 +1460,7 @@ _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Tax
 
 _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Taxi, "ToHtml", Object.freeze({
   classic: function classic(entry) {
-    return "<div class=\"taxi-card\" value=\"".concat(entry, "\">\n        <strong>").concat(entry, "</strong>\n      </div>");
+    return "<div class=\"taxi-card\" value=\"".concat(entry, "\">\n        <strong value=\"").concat(entry, "\">").concat(entry, "</strong>\n      </div>");
   }
 }));
 

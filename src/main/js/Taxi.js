@@ -76,7 +76,7 @@ class Taxi {
   static ToHtml = Object.freeze({
     classic: (entry) => {
       return `<div class="taxi-card" value="${entry}">
-        <strong>${entry}</strong>
+        <strong value="${entry}">${entry}</strong>
       </div>`;
     },
   });
@@ -166,15 +166,15 @@ class Taxi {
     this.input.addEventListener("keydown", (e) => this.handleKeyDown(e));
     this.input.addEventListener("keyup", (e) => this.handleKeyUp(e));
     this.input.addEventListener("focusin", (e) => this.taxi.style.visibility = "visible")
-    this.input.addEventListener("focusout", (e) => {
-      const $nodeAtPointer = e.explicitOriginalTarget;
-      const isChild = this.taxi.contains($nodeAtPointer) && this.taxi !== $nodeAtPointer;
+    // this.input.addEventListener("focusout", (e) => {
+    //   const $nodeAtPointer = e.explicitOriginalTarget;
+    //   const isChild = this.taxi.contains($nodeAtPointer) && this.taxi !== $nodeAtPointer;
 
-      if(isChild) return; 
+    //   if(isChild) return; 
       
-      this.taxi.style.visibility = "hidden";
+    //   this.taxi.style.visibility = "hidden";
       
-    })
+    // })
   }
 
   /**
