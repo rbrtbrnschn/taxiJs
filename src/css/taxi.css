@@ -68,8 +68,11 @@ taxi.is-overlay {
   width: 100%;
   z-index: 10;
   margin-top: 2rem;
-  max-height: var(--taxi-height);
+  height: var(--taxi-height);
   overflow: auto;
+}
+taxi.is-overlay:empty {
+  height: 0;
 }
 input.taxi:focus{
   /* //TODO How to remove outline? */
