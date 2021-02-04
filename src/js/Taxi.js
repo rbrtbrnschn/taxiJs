@@ -343,3 +343,4 @@ class Taxi {
 }
 
 export default Taxi;
+window.Taxi = Taxi;
