@@ -102,6 +102,8 @@
     <link rel="stylesheet" href="./css/taxi.css" />
     <!-- ****** Taxi.js ****** -->
     <!-- ****** Scripts & Stylesheets ****** -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="./script.js" type="module" defer></script>
     <link rel="stylesheet" href="./main.css" />
     <link
@@ -211,12 +213,12 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <img src="./assets/img/demo/setup/step-1-auto.png  " alt="" srcset="" />
+      <div class="container" data-aos="fade-up" data-aos-anchor-placement="top-center">
+        <img src="./assets/img/demo/setup/step-1-auto.png  " alt="step-1" srcset="" />
       </div>
 
       <!-- Adding Input -->
-      <div class="hero has-light-text mt-5">
+      <div class="hero has-light-text mt-5" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <div class="hero-body">
           <div class="container">
             <p class="title">Adding the input field</p>
@@ -224,8 +226,8 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <img src="./assets/img/demo/setup/step-2-auto.png" alt="" srcset="" />
+      <div class="container" data-aos="fade-up" data-aos-anchor-placement="top-center">
+        <img src="./assets/img/demo/setup/step-2-auto.png" alt="step-2" srcset="" />
       </div>
       <!-- Initializing Taxi -->
       <div class="hero has-light-text mt-5">
@@ -236,15 +238,15 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <img src="./assets/img/demo/setup/step-3-auto.png" alt="" srcset="" />
+      <div class="container" data-aos="fade-up" data-aos-anchor-placement="top-center">
+        <img src="./assets/img/demo/setup/step-3-auto.png" alt="step-3" srcset="" />
       </div>
     </div>
 
     <!-- Examples -->
-    <section id="examples">
+    <section id="examples" >
       <!-- Hero -->
-      <div class="hero mt-5 mb-5 is-warning">
+      <div class="hero mt-5 mb-5 is-warning" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <div class="hero-body">
           <div class="container">
             <p class="title">Examples</p>
@@ -253,7 +255,7 @@
         </div>
       </div>
 
-      <div class="hero is-white">
+      <div class="hero is-white" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <div class="hero-body">
           <div class="container">
             <p class="title">Fuzzy Search</p>
@@ -319,7 +321,7 @@
         </div>
       </div>
 
-      <div class="hero is-white">
+      <div class="hero is-white" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <div class="hero-body">
           <div class="container">
             <p class="title">Custom Html Rendering</p>
@@ -385,7 +387,7 @@
         </div>
       </div>
 
-      <div class="hero is-white">
+      <div class="hero is-white" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
         <div class="hero-body">
           <div class="container">
             <p class="title">Custom Query</p>
@@ -540,6 +542,8 @@
       function test() {
         console.log("test");
       }
+
+      AOS.init();
     </script>
   </body>
 </html>
