@@ -1,0 +1,16 @@
+<body>
+  <!-- INPUT -->
+
+  <script>
+    const $input = document.getElementById("input");
+    const $taxi = document.querySelector("taxi");
+    const options = {
+      minChar: 1,
+      data: ["your", "dataset", "here"],
+      toHtml: Taxi.ToHtml.classic,
+      query: Taxi.Query.fuzzy,
+    };
+
+    const _taxi = new Taxi($input, $taxi, options);
+  </script>
+</body>
