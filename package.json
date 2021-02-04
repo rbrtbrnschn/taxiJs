@@ -9,8 +9,9 @@
   "browserslist": ">0.25%, not dead",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "build": "babel src -d dist",
-    "webpack": "webpack"
+    "dist-css": "cp -a ./src/css/taxi.css ./dist/css/taxi.css",
+    "build:babel": "babel src -d dist",
+    "build": "webpack && npm run dist-css"
   },
   "repository": {
     "type": "git",
