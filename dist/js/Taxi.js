@@ -7,23 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /* GLOBALS */
 // let __AUTO_INITIALIZE = false; //@deprecated
@@ -64,7 +54,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * Taxi instance, initializing eventlisteners for corresponding {@link HTMLInputElement} and {@link HTMLTaxiElement}.
  * @class Taxi
  */
-var Taxi = /*#__PURE__*/function () {
+let Taxi = /*#__PURE__*/function () {
   /* Statics */
 
   /**
@@ -122,12 +112,12 @@ var Taxi = /*#__PURE__*/function () {
     key: "injectTaxiOptions",
     value: function injectTaxiOptions(options) {
       /* Grab defaults */
-      var injectedOptions = _objectSpread({}, Taxi.TaxiOptionsDefaults);
+      const injectedOptions = { ...Taxi.TaxiOptionsDefaults
+      };
       /* Grab user changes */
 
-
       if (options) {
-        Object.keys(options).forEach(function (key) {
+        Object.keys(options).forEach(key => {
           injectedOptions[key] = options[key];
         });
       }
@@ -144,12 +134,10 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "injectOnClicKListeners",
     value: function injectOnClicKListeners() {
-      var _this = this;
-
-      (0, _toConsumableArray2.default)(this.taxi.children).map(function (c) {
-        c.addEventListener("click", function (e) {
-          _this.input.value = e.target.getAttribute("value");
-          _this.taxi.innerHTML = "";
+      [...this.taxi.children].map(c => {
+        c.addEventListener("click", e => {
+          this.input.value = e.target.getAttribute("value");
+          this.taxi.innerHTML = "";
         });
       });
     }
@@ -160,35 +148,19 @@ var Taxi = /*#__PURE__*/function () {
 
   }, {
     key: "initEventlisteners",
-    value: function () {
-      var _initEventlisteners = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        var _this2 = this;
+    value: function initEventlisteners() {
+      return _regenerator.default.async(function initEventlisteners$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            this.input.addEventListener("keydown", e => this.handleKeyDown(e));
+            this.input.addEventListener("keyup", e => this.handleKeyUp(e));
 
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                this.input.addEventListener("keydown", function (e) {
-                  return _this2.handleKeyDown(e);
-                });
-                this.input.addEventListener("keyup", function (e) {
-                  return _this2.handleKeyUp(e);
-                });
-
-              case 2:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      function initEventlisteners() {
-        return _initEventlisteners.apply(this, arguments);
-      }
-
-      return initEventlisteners;
-    }()
+          case 2:
+          case "end":
+            return _context.stop();
+        }
+      }, null, this, null, Promise);
+    }
     /**
      * Validates minimum amount of characters present.
      * @param {Event} e - input Element
@@ -212,8 +184,6 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "handleKeyUp",
     value: function handleKeyUp(e) {
-      var _this3 = this;
-
       /* Validate minChar */
       if (!this.hasMinChar(e)) {
         this.taxi.innerHTML = "";
@@ -222,21 +192,21 @@ var Taxi = /*#__PURE__*/function () {
       /* Get variables */
 
 
-      var which = e.which;
-      var value = e.target.value;
+      const {
+        which
+      } = e;
+      const {
+        value
+      } = e.target;
       /* Validate keyCode */
 
-      var isActionCode = this.actionCodes.includes(which);
+      const isActionCode = this.actionCodes.includes(which);
       if (isActionCode) return;
       /* Get HTML  */
 
-      var copy = (0, _toConsumableArray2.default)(this.options.data);
-      var filtered = copy.filter(function (entry) {
-        return _this3.options.query(entry, value);
-      });
-      var html = filtered.map(function (entry) {
-        return _this3.options.toHtml(entry);
-      }).join("\n");
+      const copy = [...this.options.data];
+      const filtered = copy.filter(entry => this.options.query(entry, value));
+      const html = filtered.map(entry => this.options.toHtml(entry)).join("\n");
       /* Display */
 
       this.taxi.innerHTML = html;
@@ -256,26 +226,24 @@ var Taxi = /*#__PURE__*/function () {
         return;
       }
 
-      var isActionCode = this.actionCodes.includes(e.which);
+      const isActionCode = this.actionCodes.includes(e.which);
       if (!isActionCode) return;
       /* Prevent defaults */
 
       e.preventDefault();
       /* Get selected */
 
-      var children = this.taxi.children;
-      var max = children.length;
-      var selected = this.taxi.querySelector(".is-selected");
+      const children = this.taxi.children;
+      const max = children.length;
+      const selected = this.taxi.querySelector(".is-selected");
       /* Clean up */
 
-      this.taxi.querySelectorAll(".is-selected").forEach(function (i) {
-        return i.classList.toggle("is-selected");
-      });
+      this.taxi.querySelectorAll(".is-selected").forEach(i => i.classList.toggle("is-selected"));
       /* Indices */
 
-      var current = (0, _toConsumableArray2.default)(children).indexOf(selected);
-      var next = current + 1 < max ? current + 1 : current;
-      var prev = current - 1 > 0 ? current - 1 : 0;
+      const current = [...children].indexOf(selected);
+      const next = current + 1 < max ? current + 1 : current;
+      const prev = current - 1 > 0 ? current - 1 : 0;
       /* Handle actions */
 
       switch (e.which) {
@@ -341,8 +309,8 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "setQuery",
     value: function setQuery(query) {
-      var isCustom = !(Object.values(Taxi.Query).indexOf(query) >= 0);
-      if (this.options.showWarnings && isCustom) console.warn("You are using a custom query.\nTo use our selection of recommended query options, be sure to checkout the documentation here: https://taxiJs.rbrtbrnschn.dev.");
+      const isCustom = !(Object.values(Taxi.Query).indexOf(query) >= 0);
+      if (this.options.showWarnings && isCustom) console.warn(`You are using a custom query.\nTo use our selection of recommended query options, be sure to checkout the documentation here: https://taxiJs.rbrtbrnschn.dev.`);
       this.options.query = query;
     }
     /**
@@ -364,7 +332,7 @@ var Taxi = /*#__PURE__*/function () {
     key: "setMinChar",
     value: function setMinChar(minChar) {
       if (this.options.showWarnings && minChar > Taxi.TaxiOptionsRecommended.minChar) {
-        console.warn("You are not using the recommended range of minimum characters.\nRecommended range: 0 - ".concat(Taxi.TaxiOptionsRecommended.minChar));
+        console.warn(`You are not using the recommended range of minimum characters.\nRecommended range: 0 - ${Taxi.TaxiOptionsRecommended.minChar}`);
       }
 
       this.options.minChar = minChar;
@@ -377,7 +345,7 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "setWarnings",
     value: function setWarnings(boo) {
-      if ((0, _typeof2.default)(boo) == Boolean) {
+      if (typeof boo == Boolean) {
         this.options.showWarnings = boo;
       }
     }
@@ -386,17 +354,15 @@ var Taxi = /*#__PURE__*/function () {
 }();
 
 (0, _defineProperty2.default)(Taxi, "Query", {
-  strict: function strict(record, query) {
-    return record.toLowerCase().includes(query.toLowerCase());
-  },
-  fuzzy: function fuzzy(record, query) {
-    var recordLowerCase = record.toLowerCase();
+  strict: (record, query) => record.toLowerCase().includes(query.toLowerCase()),
+  fuzzy: (record, query) => {
+    const recordLowerCase = record.toLowerCase();
     query = query.toLowerCase().replace(/ /g, "");
-    var match = [];
-    var searchPosition = 0;
+    const match = [];
+    let searchPosition = 0;
 
-    for (var number = 0; number < recordLowerCase.length; number++) {
-      var recordChar = record[number];
+    for (let number = 0; number < recordLowerCase.length; number++) {
+      const recordChar = record[number];
 
       if (searchPosition < query.length && recordLowerCase[number] === query[searchPosition]) {
         searchPosition++;
@@ -411,8 +377,10 @@ var Taxi = /*#__PURE__*/function () {
   }
 });
 (0, _defineProperty2.default)(Taxi, "ToHtml", Object.freeze({
-  classic: function classic(entry) {
-    return "<div class=\"taxi-card\" value=\"".concat(entry, "\">\n        <strong>").concat(entry, "</strong>\n      </div>");
+  classic: entry => {
+    return `<div class="taxi-card" value="${entry}">
+        <strong>${entry}</strong>
+      </div>`;
   }
 }));
 (0, _defineProperty2.default)(Taxi, "TaxiOptionsDefaults", Object.freeze({
