@@ -9,7 +9,7 @@
   "browserslist": ">0.25%, not dead",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "dist-css": "cp -a ./src/css/taxi.css ./dist/css/taxi.css",
+    "dist-css": "cp -a ./src/main/css/taxi.css ./dist/css/taxi.css",
     "build:babel": "babel src -d dist",
     "build": "webpack && npm run dist-css"
   },
