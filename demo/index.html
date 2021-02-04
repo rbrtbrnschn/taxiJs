@@ -150,7 +150,9 @@
 
           <a class="navbar-item" href="#setup"> Setup </a>
 
-          <a class="navbar-item" href="/docs"> Documentation </a>
+          <a href="#examples" class="navbar-item">Examples</a>
+
+          <a class="navbar-item" href="#documentation"> Documentation </a>
 
           <!-- <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link"> More </a>
@@ -239,7 +241,197 @@
       </div>
     </div>
 
-    <div class="hero mt-5">
+    <!-- Examples -->
+    <section id="examples">
+      <!-- Hero -->
+      <div class="hero mt-5 mb-5 is-warning">
+        <div class="hero-body">
+          <div class="container">
+            <p class="title">Examples</p>
+            <div class="p subtitle">Taxi playground. Have fun.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero is-white">
+        <div class="hero-body">
+          <div class="container">
+            <p class="title">Fuzzy Search</p>
+            <p class="subtitle">Search query is a bit more loose. You can add multiple keywords or characters from a given word/sentence.</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        
+        <!-- Example 1-->
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input type="text" class="input taxi" id="taxi1" placeholder="Try: wagen" />
+            <taxi id="🚖1" class="is-overlay is-small"></taxi>
+          </div>
+          <button class="button is-warning" onclick="//open  img modal">
+            Show code
+          </button>
+        </div>
+        <!-- Tags -->
+        <div class="field is-grouped is-grouped-multiline">
+          <!-- Query Tag -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">query</div>
+              <div class="tag is-warning">fuzzy</div>
+            </div>
+          </div>
+          <!-- minChar -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">minChar</div>
+              <div class="tag is-light">1</div>
+            </div>
+          </div>
+          <!-- toHtml -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">toHtml</div>
+              <div class="tag is-warning">classic</div>
+            </div>
+          </div>
+          <!-- data -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">data</div>
+              <div class="tag is-light">dataset1</div>
+            </div>
+          </div>
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">size</div>
+              <div class="tag is-warning">is-small</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="hero is-white">
+        <div class="hero-body">
+          <div class="container">
+            <p class="title">Custom Html Rendering</p>
+            <p class="subtitle">You provide your own <strong>toHtml</strong> render function, in which you can use popular frameworks like bulma, bootstrap, etc.</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <!-- Example 2-->
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input type="text" class="input taxi" id="taxi2" placeholder="Try multiple keywords, ie: buses subways smoking" />
+            <taxi id="🚖2" class="is-overlay is-medium"></taxi>
+          </div>
+          <button class="button is-warning" onclick="//open  img modal">
+            Show code
+          </button>
+        </div>
+        <!-- Tags -->
+        <div class="field is-grouped is-grouped-multiline">
+          <!-- Query Tag -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">query</div>
+              <div class="tag is-warning">fuzzy</div>
+            </div>
+          </div>
+          <!-- minChar -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">minChar</div>
+              <div class="tag is-light">3</div>
+            </div>
+          </div>
+          <!-- toHtml -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">toHtml</div>
+              <div class="tag is-warning">custom</div>
+            </div>
+          </div>
+          <!-- data -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">data</div>
+              <div class="tag is-light">dataset2</div>
+            </div>
+          </div>
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">size</div>
+              <div class="tag is-warning">is-medium</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero is-white">
+        <div class="hero-body">
+          <div class="container">
+            <p class="title">Custom Query</p>
+            <p class="subtitle">You can provide a custom <strong>query</strong> filter function to query through the data you provide. The following exmaple is bananas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <!-- Example 3-->
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input type="text" class="input taxi" id="taxi3" placeholder="Try writing an auto-complete option till the end" />
+            <taxi id="🚖3" class="is-overlay is-large"></taxi>
+          </div>
+          <button class="button is-warning" onclick="//open  img modal">
+            Show code
+          </button>
+        </div>
+        <!-- Tags -->
+        <div class="field is-grouped is-grouped-multiline">
+          <!-- Query Tag -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">query</div>
+              <div class="tag is-warning">custom</div>
+            </div>
+          </div>
+          <!-- minChar -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">minChar</div>
+              <div class="tag is-light">3</div>
+            </div>
+          </div>
+          <!-- toHtml -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">toHtml</div>
+              <div class="tag is-warning">custom</div>
+            </div>
+          </div>
+          <!-- data -->
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">data</div>
+              <div class="tag is-light">dataset1</div>
+            </div>
+          </div>
+          <div class="control">
+            <div class="tags has-addons are-medium">
+              <div class="tag is-dark">size</div>
+              <div class="tag is-warning">is-large</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="hero mt-5" id="documentation">
       <div class="hero-body">
         <div class="container">
           <p class="title">Looking for documentation?</p>
