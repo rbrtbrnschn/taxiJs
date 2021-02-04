@@ -53,7 +53,7 @@ input.taxi {
   background: var(--bg-1);
   box-sizing: border-box;
   padding: 0.3rem;
-  border-color:var(--border-1);
+  border:1px solid var(--border-1);
 }
 /* * Centering direct children when --border-radius is set*/
 taxi div {
@@ -70,6 +70,9 @@ taxi.is-overlay {
   margin-top: 2rem;
   height: var(--taxi-height);
   overflow: auto;
+}
+taxi.is-overlay:empty {
+  height: 0;
 }
 input.taxi:focus{
   /* //TODO How to remove outline? */
