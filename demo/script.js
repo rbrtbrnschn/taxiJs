@@ -1,6 +1,13 @@
 import data from "./assets/data/data.js";
 import dataset1 from "./assets/data/dataset1.js";
 import dataset2 from "./assets/data/dataset2.js";
+import Plugin from "./src/main/js/plugin/EventPlugin.js";
+
+const samplePlugin = new Plugin("40", (taxiJs, e) =>
+  console.log(
+    "What you are witnessing my friend. That's called a plugin. Yes! We have those."
+  )
+);
 
 // Home
 (async function () {
@@ -35,6 +42,7 @@ import dataset2 from "./assets/data/dataset2.js";
     devOps: {
       closeOnClickAway: true,
     },
+    plugins: [samplePlugin],
   };
   const _taxi = new Taxi(taxis[0], taxi, options);
 })();
