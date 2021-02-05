@@ -18,6 +18,17 @@ module.exports = _arrayLikeToArray;
 
 /***/ }),
 
+/***/ 858:
+/***/ ((module) => {
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+
+/***/ }),
+
 /***/ 646:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -143,6 +154,51 @@ module.exports = _iterableToArray;
 
 /***/ }),
 
+/***/ 884:
+/***/ ((module) => {
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+
+/***/ }),
+
+/***/ 521:
+/***/ ((module) => {
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+
+/***/ }),
+
 /***/ 206:
 /***/ ((module) => {
 
@@ -151,6 +207,25 @@ function _nonIterableSpread() {
 }
 
 module.exports = _nonIterableSpread;
+
+/***/ }),
+
+/***/ 38:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var arrayWithHoles = __webpack_require__(858);
+
+var iterableToArrayLimit = __webpack_require__(884);
+
+var unsupportedIterableToArray = __webpack_require__(379);
+
+var nonIterableRest = __webpack_require__(521);
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
 
 /***/ }),
 
@@ -1047,20 +1122,193 @@ try {
 /************************************************************************/
 (() => {
 "use strict";
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
-/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(757);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(926);
-/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(319);
-/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(575);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(913);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(713);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6__);
+
+// UNUSED EXPORTS: default
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
+var helpers_typeof = __webpack_require__(8);
+var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
+var regenerator = __webpack_require__(757);
+var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
+var asyncToGenerator = __webpack_require__(926);
+var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/toConsumableArray.js
+var toConsumableArray = __webpack_require__(319);
+var toConsumableArray_default = /*#__PURE__*/__webpack_require__.n(toConsumableArray);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/classCallCheck.js
+var classCallCheck = __webpack_require__(575);
+var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/createClass.js
+var createClass = __webpack_require__(913);
+var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
+var defineProperty = __webpack_require__(713);
+var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
+var slicedToArray = __webpack_require__(38);
+var slicedToArray_default = /*#__PURE__*/__webpack_require__.n(slicedToArray);
+;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress.js
+
+
+
+var KeyPress = /*#__PURE__*/function () {
+  function KeyPress(keyCode, action, validation) {
+    classCallCheck_default()(this, KeyPress);
+
+    this.action = action;
+    this.validation = validation;
+    this.keyCode = keyCode;
+  }
+
+  createClass_default()(KeyPress, [{
+    key: "handleAction",
+    value: function handleAction(taxi, e) {
+      try {
+        if (this.validation !== undefined && !this.validation(taxi, e)) return;
+        return this.action(taxi, e);
+      } catch (err) {}
+    }
+  }]);
+
+  return KeyPress;
+}();
+
+
+;// CONCATENATED MODULE: ./src/main/js/keyPress/utils.js
+
+function getCurrNextPrev(taxi) {
+  /* Get Selected */
+  var children = taxi.children;
+  var max = children.length;
+  var selected = taxi.querySelector(".is-selected");
+  /* Indices */
+
+  var current = toConsumableArray_default()(children).indexOf(selected);
+
+  var next = getNext(current, max);
+  var prev = getPrev(current);
+  return [current, next, prev];
+}
+function getNext(current, max) {
+  return current + 1 < max ? current + 1 : current;
+}
+function getPrev(current) {
+  return current - 1 > 0 ? current - 1 : 0;
+}
+function cleanUp(taxi) {
+  taxi.querySelectorAll(".is-selected").forEach(function (i) {
+    return i.classList.toggle("is-selected");
+  });
+}
+;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress40.js
+
+
+
+/* harmony default export */ const KeyPress40 = (new KeyPress(40, action, function (taxi, e) {
+  return true;
+}));
+
+function action(taxiJs, e) {
+  var _utils$getCurrNextPre = getCurrNextPrev(taxiJs.taxi),
+      _utils$getCurrNextPre2 = slicedToArray_default()(_utils$getCurrNextPre, 2),
+      next = _utils$getCurrNextPre2[1];
+
+  cleanUp(taxiJs.taxi);
+  taxiJs.taxi.children[next].classList.toggle("is-selected");
+}
+;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress38.js
+
+
+
+/* harmony default export */ const KeyPress38 = (new KeyPress(38, KeyPress38_action, validation));
+
+function KeyPress38_action(taxiJs, e) {
+  var _utils$getCurrNextPre = getCurrNextPrev(taxiJs.taxi),
+      _utils$getCurrNextPre2 = slicedToArray_default()(_utils$getCurrNextPre, 3),
+      prev = _utils$getCurrNextPre2[2];
+
+  cleanUp(taxiJs.taxi);
+  taxiJs.taxi.children[prev].classList.toggle("is-selected");
+}
+
+function validation(taxiJs, e) {
+  return true;
+}
+;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress9.js
+
+
+/* harmony default export */ const KeyPress9 = (new KeyPress(9, KeyPress9_action, KeyPress9_validation));
+
+function KeyPress9_action(taxiJs, e) {
+  KeyPress40.handleAction(taxiJs, e);
+}
+
+function KeyPress9_validation(taxiJs, e) {
+  return true;
+}
+;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress13.js
+
+/* harmony default export */ const KeyPress13 = (new KeyPress(13, KeyPress13_action, KeyPress13_validation));
+
+function KeyPress13_action(taxiJs, e) {
+  var selected = taxiJs.taxi.querySelector(".is-selected");
+  if (!selected) return;
+  taxiJs.input.value = selected.getAttribute("value");
+  taxiJs.taxi.innerHTML = "";
+}
+
+function KeyPress13_validation(taxiJs, e) {
+  return true;
+}
+;// CONCATENATED MODULE: ./src/main/js/keyPress/index.js
+
+
+
+
+
+
+var keys = [KeyPress38, KeyPress40, KeyPress9, KeyPress13];
+
+var KeyHandler = /*#__PURE__*/function () {
+  function KeyHandler(keys) {
+    var _this = this;
+
+    classCallCheck_default()(this, KeyHandler);
+
+    this.map = new Map();
+    keys.forEach(function (k) {
+      return _this.bind(k.keyCode, k);
+    });
+  }
+
+  createClass_default()(KeyHandler, [{
+    key: "bind",
+    value: function bind(_keyCode, _class) {
+      this.map.set(_keyCode, _class);
+    }
+  }, {
+    key: "has",
+    value: function has(_key) {
+      return this.map.has(_key);
+    }
+  }, {
+    key: "handle",
+    value: function handle(taxi, e) {
+      var hasKey = this.map.has(e.which);
+
+      if (hasKey) {
+        return this.map.get(e.which).handleAction(taxi, e);
+      }
+    }
+  }]);
+
+  return KeyHandler;
+}();
+
+/* harmony default export */ const keyPress = (new KeyHandler(keys));
+;// CONCATENATED MODULE: ./src/main/js/Taxi.js
 
 
 
@@ -1071,7 +1319,7 @@ try {
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /* GLOBALS */
 // let __AUTO_INITIALIZE = false; //@deprecated
@@ -1119,6 +1367,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * Taxi instance, initializing eventlisteners for corresponding {@link HTMLInputElement} and {@link HTMLTaxiElement}.
  * @class Taxi
  */
+
 var Taxi = /*#__PURE__*/function () {
   /* Statics */
 
@@ -1147,7 +1396,7 @@ var Taxi = /*#__PURE__*/function () {
    * @param {TaxiOptions} [options] - optional settings by {@link TaxiOptions}
    */
   function Taxi(input, taxi, options) {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_4___default()(this, Taxi);
+    classCallCheck_default()(this, Taxi);
 
     /* Property initialization by paramterers */
     this.input = input;
@@ -1175,7 +1424,7 @@ var Taxi = /*#__PURE__*/function () {
    */
 
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_5___default()(Taxi, [{
+  createClass_default()(Taxi, [{
     key: "injectTaxiOptions",
     value: function injectTaxiOptions(options) {
       /* Grab defaults */
@@ -1203,7 +1452,7 @@ var Taxi = /*#__PURE__*/function () {
     value: function injectOnClicKListeners() {
       var _this = this;
 
-      _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_3___default()(this.taxi.children).map(function (c) {
+      toConsumableArray_default()(this.taxi.children).map(function (c) {
         c.addEventListener("click", function (e) {
           _this.input.value = e.target.getAttribute("value");
           _this.taxi.innerHTML = "";
@@ -1219,11 +1468,11 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "initEventlisteners",
     value: function () {
-      var _initEventlisteners = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(devOps) {
+      var _initEventlisteners = asyncToGenerator_default()( /*#__PURE__*/regenerator_default().mark(function _callee(devOps) {
         var _this2 = this;
 
         var closeOnClickAway;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
+        return regenerator_default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
@@ -1296,7 +1545,7 @@ var Taxi = /*#__PURE__*/function () {
       if (isActionCode) return;
       /* Get HTML  */
 
-      var copy = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_3___default()(this.options.data);
+      var copy = toConsumableArray_default()(this.options.data);
 
       var filtered = copy.filter(function (entry) {
         return _this3.options.query(entry, value);
@@ -1311,67 +1560,28 @@ var Taxi = /*#__PURE__*/function () {
     }
     /**
      * Hanled "keydown" event, meaning only `non` text-input actions.
-     * Handled keycodes: `40, 38, 9`.
+     * Handled keycodes: `40, 38, 9, 13`.
      * @param {Event} e
      */
 
   }, {
     key: "handleKeyDown",
     value: function handleKeyDown(e) {
+      /* Is Valid Key? */
+      if (!keyPress.has(e.which)) return;
+      /* KeyHandler Validation  */
+
       if (!this.hasMinChar(e)) {
         this.taxi.innerHTML = "";
         return;
       }
-
-      var isActionCode = this.actionCodes.includes(e.which);
-      if (!isActionCode) return;
       /* Prevent defaults */
 
+
       e.preventDefault();
-      /* Get selected */
+      /* Handle event */
 
-      var children = this.taxi.children;
-      var max = children.length;
-      var selected = this.taxi.querySelector(".is-selected");
-      /* Clean up */
-
-      this.taxi.querySelectorAll(".is-selected").forEach(function (i) {
-        return i.classList.toggle("is-selected");
-      });
-      /* Indices */
-
-      var current = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_3___default()(children).indexOf(selected);
-
-      var next = current + 1 < max ? current + 1 : current;
-      var prev = current - 1 > 0 ? current - 1 : 0;
-      /* Handle actions */
-
-      switch (e.which) {
-        case 40:
-          /* Down */
-          children[next].classList.toggle("is-selected");
-          break;
-
-        case 38:
-          // Up
-          children[prev].classList.toggle("is-selected");
-          break;
-
-        case 9:
-          // Tab => Down
-          children[next].classList.toggle("is-selected");
-          break;
-
-        case 13:
-          // Enter
-          if (!selected) return;
-          this.input.value = selected.getAttribute("value");
-          this.taxi.innerHTML = "";
-          break;
-
-        default:
-          break;
-      }
+      keyPress.handle(this, e);
     }
     /**
      *
@@ -1462,7 +1672,7 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "setWarnings",
     value: function setWarnings(boo) {
-      if (_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0___default()(boo) == Boolean) {
+      if (typeof_default()(boo) == Boolean) {
         this.options.showWarnings = boo;
       }
     }
@@ -1471,7 +1681,7 @@ var Taxi = /*#__PURE__*/function () {
   return Taxi;
 }();
 
-_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Taxi, "Query", {
+defineProperty_default()(Taxi, "Query", {
   strict: function strict(record, query) {
     return record.toLowerCase().includes(query.toLowerCase());
   },
@@ -1497,13 +1707,13 @@ _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Tax
   }
 });
 
-_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Taxi, "ToHtml", Object.freeze({
+defineProperty_default()(Taxi, "ToHtml", Object.freeze({
   classic: function classic(entry) {
     return "<div class=\"taxi-card\" value=\"".concat(entry, "\">\n        <strong value=\"").concat(entry, "\">").concat(entry, "</strong>\n      </div>");
   }
 }));
 
-_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Taxi, "TaxiOptionsDefaults", Object.freeze({
+defineProperty_default()(Taxi, "TaxiOptionsDefaults", Object.freeze({
   data: ["Volkwagen", "Mercedes", "Daimler"],
   query: Taxi.Query.strict,
   toHtml: Taxi.ToHtml.classic,
@@ -1515,11 +1725,11 @@ _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Tax
   }
 }));
 
-_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Taxi, "TaxiOptionsRecommended", Object.freeze({
+defineProperty_default()(Taxi, "TaxiOptionsRecommended", Object.freeze({
   minChar: 5
 }));
 
-/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = ((/* unused pure expression or super */ null && (Taxi)));
+/* harmony default export */ const js_Taxi = ((/* unused pure expression or super */ null && (Taxi)));
 __webpack_require__.g.Taxi = Taxi;
 })();
 

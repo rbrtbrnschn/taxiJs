@@ -1,5 +1,6 @@
 /* GLOBALS */
 // let __AUTO_INITIALIZE = false; //@deprecated
+import KeyHandler from "./keyPress";
 
 /**
  * TaxiOptions interface, outlining all available options to give in, when instantiating a new {@link Taxi} instance.
@@ -231,58 +232,24 @@ class Taxi {
 
   /**
    * Hanled "keydown" event, meaning only `non` text-input actions.
-   * Handled keycodes: `40, 38, 9`.
+   * Handled keycodes: `40, 38, 9, 13`.
    * @param {Event} e
    */
   handleKeyDown(e) {
+    /* Is Valid Key? */
+    if (!KeyHandler.has(e.which)) return;
+
+   /* KeyHandler Validation  */ 
     if (!this.hasMinChar(e)) {
       this.taxi.innerHTML = "";
       return;
     }
-    const isActionCode = this.actionCodes.includes(e.which);
-    if (!isActionCode) return;
 
     /* Prevent defaults */
     e.preventDefault();
-
-    /* Get selected */
-    const children = this.taxi.children;
-    const max = children.length;
-    const selected = this.taxi.querySelector(".is-selected");
-
-    /* Clean up */
-    this.taxi
-      .querySelectorAll(".is-selected")
-      .forEach((i) => i.classList.toggle("is-selected"));
-
-    /* Indices */
-    const current = [...children].indexOf(selected);
-    const next = current + 1 < max ? current + 1 : current;
-    const prev = current - 1 > 0 ? current - 1 : 0;
-
-    /* Handle actions */
-    switch (e.which) {
-      case 40:
-        /* Down */
-        children[next].classList.toggle("is-selected");
-        break;
-      case 38:
-        // Up
-        children[prev].classList.toggle("is-selected");
-        break;
-      case 9:
-        // Tab => Down
-        children[next].classList.toggle("is-selected");
-        break;
-      case 13:
-        // Enter
-        if (!selected) return;
-        this.input.value = selected.getAttribute("value");
-        this.taxi.innerHTML = "";
-        break;
-      default:
-        break;
-    }
+    
+    /* Handle event */
+    KeyHandler.handle(this, e);
   }
 
   /**
