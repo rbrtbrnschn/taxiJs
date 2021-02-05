@@ -1,6 +1,6 @@
-import Module from "./Plugin";
+import Plugin from "./Plugin";
 
-class ModuleFactory {
+class PluginFactory {
   constructor() {
     this.modules = {};
   }
@@ -36,4 +36,4 @@ class ModuleFactory {
   }
 }
 
-export default new ModuleFactory();
+export default new PluginFactory();
