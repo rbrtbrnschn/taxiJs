@@ -1202,7 +1202,95 @@ function cleanUp(taxi) {
     return i.classList.toggle("is-selected");
   });
 }
+;// CONCATENATED MODULE: ./src/main/js/plugin/Plugin.js
+
+
+
+
+var Module = /*#__PURE__*/function () {
+  function Module(trigger, functionality) {
+    classCallCheck_default()(this, Module);
+
+    if (!trigger in Module.Triggers) throw new Error("invalid trigger");
+    this.trigger = trigger;
+    this.functionality = functionality;
+  }
+
+  createClass_default()(Module, [{
+    key: "handleAction",
+    value: function handleAction(taxiJs) {
+      try {
+        this.functionality(taxiJs);
+      } catch (err) {
+        throw new Error("[third-party module]: ".concat(name, " failed at ").concat(this.trigger));
+      }
+    }
+  }]);
+
+  return Module;
+}();
+
+defineProperty_default()(Module, "Triggers", Object.freeze(["40", "38", "13", "9"]));
+
+
+;// CONCATENATED MODULE: ./src/main/js/plugin/index.js
+
+
+
+
+var PluginFactory = /*#__PURE__*/function () {
+  function PluginFactory() {
+    classCallCheck_default()(this, PluginFactory);
+
+    this.modules = {};
+  }
+  /**
+   * Registers plugin in given location.
+   * @param {Object} metadata 
+   * @param {() =>} functionality 
+   * @param {String} location 
+   */
+
+
+  createClass_default()(PluginFactory, [{
+    key: "register",
+    value: function register(module) {
+      var trigger = module.trigger;
+
+      if (!this.modules[trigger]) {
+        this.modules[trigger] = [];
+      }
+
+      this.modules[trigger].push(module);
+    }
+    /**
+     * 
+     * @param {String} pluginEventName 
+     * @param {Taxi} taxiJs 
+     * @param {Event} e 
+     */
+
+  }, {
+    key: "handle",
+    value: function handle(eventName, taxiJs, e) {
+      if (!this.modules[eventName]) return;
+
+      try {
+        this.modules[eventName].forEach(function (p) {
+          return p.handleAction(taxiJs, e);
+        });
+      } catch (err) {
+        console.error("Module failed.");
+      }
+    }
+  }]);
+
+  return PluginFactory;
+}();
+
+/* harmony default export */ const js_plugin = (new PluginFactory());
 ;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress40.js
+
 
 
 
@@ -1217,8 +1305,10 @@ function action(taxiJs, e) {
 
   cleanUp(taxiJs.taxi);
   taxiJs.taxi.children[next].classList.toggle("is-selected");
+  js_plugin.handle("40", taxiJs, e);
 }
 ;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress38.js
+
 
 
 
@@ -1231,12 +1321,14 @@ function KeyPress38_action(taxiJs, e) {
 
   cleanUp(taxiJs.taxi);
   taxiJs.taxi.children[prev].classList.toggle("is-selected");
+  js_plugin.handle("38", taxiJs, e);
 }
 
 function validation(taxiJs, e) {
   return true;
 }
 ;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress9.js
+
 
 
 /* harmony default export */ const KeyPress9 = (new KeyPress(9, KeyPress9_action, KeyPress9_validation));
@@ -1250,6 +1342,7 @@ function KeyPress9_validation(taxiJs, e) {
 }
 ;// CONCATENATED MODULE: ./src/main/js/keyPress/KeyPress13.js
 
+
 /* harmony default export */ const KeyPress13 = (new KeyPress(13, KeyPress13_action, KeyPress13_validation));
 
 function KeyPress13_action(taxiJs, e) {
@@ -1257,6 +1350,7 @@ function KeyPress13_action(taxiJs, e) {
   if (!selected) return;
   taxiJs.input.value = selected.getAttribute("value");
   taxiJs.taxi.innerHTML = "";
+  keyPress.handle("13", taxiJs, e);
 }
 
 function KeyPress13_validation(taxiJs, e) {
@@ -1323,6 +1417,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 /* GLOBALS */
 // let __AUTO_INITIALIZE = false; //@deprecated
+
 
 /**
  * TaxiOptions interface, outlining all available options to give in, when instantiating a new {@link Taxi} instance.
@@ -1405,9 +1500,14 @@ var Taxi = /*#__PURE__*/function () {
 
     this.input.taxi = this;
     this.actionCodes = [40, 38, 9, 13];
+    this.modules = {
+      core: new Map(),
+      thirdParty: new Map()
+    };
     /* Validate options */
 
     this.injectTaxiOptions(options);
+    this.injectTaxiPlugins(options.plugins);
     /* Public Methods */
 
     this.setData = this.setData.bind(this);
@@ -1441,6 +1541,18 @@ var Taxi = /*#__PURE__*/function () {
 
 
       this.options = injectedOptions;
+    }
+    /**
+     * Inject plugins properly.
+     * @param {Object} plugins 
+     */
+
+  }, {
+    key: "injectTaxiPlugins",
+    value: function injectTaxiPlugins(plugins) {
+      plugins && plugins.forEach(function (p) {
+        return js_plugin.register(p);
+      });
     }
     /**
      * Adds onclick listeners.
@@ -1488,7 +1600,7 @@ var Taxi = /*#__PURE__*/function () {
                 });
                 this.input.addEventListener("focusin", function (e) {
                   return _this2.taxi.style.visibility = "visible";
-                });
+                }); // PluginFactory.handle(this, document)
 
               case 5:
               case "end":

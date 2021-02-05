@@ -1,6 +1,7 @@
 /* GLOBALS */
 // let __AUTO_INITIALIZE = false; //@deprecated
 import KeyHandler from "./keyPress";
+import ModuleFactory from "./plugin";
 
 /**
  * TaxiOptions interface, outlining all available options to give in, when instantiating a new {@link Taxi} instance.
@@ -125,9 +126,14 @@ class Taxi {
     /* Further property initialization */
     this.input.taxi = this;
     this.actionCodes = [40, 38, 9, 13];
+    this.modules = {
+      core: new Map(),
+      thirdParty: new Map(),
+    };
 
     /* Validate options */
     this.injectTaxiOptions(options);
+    this.injectTaxiPlugins(options.plugins);
 
     /* Public Methods */
     this.setData = this.setData.bind(this);
@@ -159,6 +165,14 @@ class Taxi {
   }
 
   /**
+   * Inject plugins properly.
+   * @param {Object} plugins 
+   */
+  injectTaxiPlugins(plugins) {
+      plugins && plugins.forEach((p) => ModuleFactory.register(p));
+  }
+
+  /**
    * Adds onclick listeners.
    * @returns {void}
    */
@@ -187,6 +201,7 @@ class Taxi {
       "focusin",
       (e) => (this.taxi.style.visibility = "visible")
     );
+    // PluginFactory.handle(this, document)
   }
 
   /**
