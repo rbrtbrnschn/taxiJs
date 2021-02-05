@@ -12,8 +12,12 @@ import dataset2 from "./assets/data/dataset2.js";
   const options = {
     toHtml: (entry) => `
       <div class="taxi-card" value="${entry.make + " " + entry.model}">
-            <strong value="${entry.make + " " + entry.model}">Brand:</strong> ${entry.make} <br>
-            <strong value="${entry.make + " " + entry.model}">Model:</strong> ${entry.model} <br>
+            <strong value="${entry.make + " " + entry.model}">Brand:</strong> ${
+      entry.make
+    } <br>
+            <strong value="${entry.make + " " + entry.model}">Model:</strong> ${
+      entry.model
+    } <br>
       </div>`,
     data: data,
     minChar: 1,
@@ -28,6 +32,9 @@ import dataset2 from "./assets/data/dataset2.js";
       }
       return false;
     },
+    devOps: {
+      closeOnClickAway: true,
+    },
   };
   const _taxi = new Taxi(taxis[0], taxi, options);
 })();
@@ -41,6 +48,9 @@ import dataset2 from "./assets/data/dataset2.js";
     minChar: 1,
     query: Taxi.Query.fuzzy,
     data: dataset1,
+    devOps: {
+      closeOnClickAway: true,
+    },
   };
 
   const _taxi = new Taxi($input, $taxi, options);
@@ -67,6 +77,9 @@ import dataset2 from "./assets/data/dataset2.js";
   </div>
   
 </div>`,
+    devOps: {
+      closeOnClickAway: true,
+    },
   };
 
   const _taxi = new Taxi($input, $taxi, options);
@@ -82,6 +95,9 @@ import dataset2 from "./assets/data/dataset2.js";
     data: dataset1,
     toHtml: Taxi.ToHtml.classic,
     query: (entry, val) => !entry.toLowerCase().includes(val.toLowerCase()),
+    devOps: {
+      closeOnClickAway: true,
+    },
   };
 
   const _taxi = new Taxi($input, $taxi, options);

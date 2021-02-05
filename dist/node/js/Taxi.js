@@ -1072,6 +1072,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * @property {toHtml} toHtml - html mapping method
  * @property {number} minChar - minimum amount of avaialble characters to show auto-complete
  * @property {boolean} showWarnings - true by default
+ * @property {array} plugins - array of plugins
+ * @property {devOps} dev - developer options & experimental features
+ */
+
+/**
+ * @typedef {Object} devOps
+ * @property {boolean} closeOnClickAway - hides auto-complete options on click away
  */
 
 /**
@@ -1113,12 +1120,14 @@ var Taxi = /*#__PURE__*/function () {
    * Holding builtin toHtml variants.
    * @property {toHtml} classic - designed for {@link TaxiOptions}.data type of string[].
    */
-  // /**
-  //  *
-  //  * Default TaxiOptions, to be used incase of none given.
-  //  * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
-  //  * @property {query} query - {@link taxiquery}
-  //  */
+
+  /**
+   *
+   * Default TaxiOptions, to be used incase of none given.
+   * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
+   * @property {query} query - {@link taxiquery}
+   * @property {devOps} devOps - experimental features
+   */
 
   /**
    * @param {HTMLInputElement} input - input element
@@ -1146,7 +1155,7 @@ var Taxi = /*#__PURE__*/function () {
     this.setToHtml = this.setToHtml.bind(this);
     /* Initialization */
 
-    this.initEventlisteners();
+    this.initEventlisteners(this.options.devOps);
   }
   /**
    * Inject default {@link TaxiOptions} and modify if needed.
@@ -1191,35 +1200,36 @@ var Taxi = /*#__PURE__*/function () {
     }
     /**
      * Initializes eventlisteners.
+     * @param {devOps} devOps
      * @returns {void}
      */
 
   }, {
     key: "initEventlisteners",
     value: function () {
-      var _initEventlisteners = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee() {
+      var _initEventlisteners = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(devOps) {
         var _this2 = this;
 
+        var closeOnClickAway;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                closeOnClickAway = devOps.closeOnClickAway;
                 this.input.addEventListener("keydown", function (e) {
                   return _this2.handleKeyDown(e);
                 });
                 this.input.addEventListener("keyup", function (e) {
                   return _this2.handleKeyUp(e);
                 });
+                closeOnClickAway && document.addEventListener("click", function (e) {
+                  return _this2.handleClick(e);
+                });
                 this.input.addEventListener("focusin", function (e) {
                   return _this2.taxi.style.visibility = "visible";
-                }); // this.input.addEventListener("focusout", (e) => {
-                //   const $nodeAtPointer = e.explicitOriginalTarget;
-                //   const isChild = this.taxi.contains($nodeAtPointer) && this.taxi !== $nodeAtPointer;
-                //   if(isChild) return; 
-                //   this.taxi.style.visibility = "hidden";
-                // })
+                });
 
-              case 3:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -1227,7 +1237,7 @@ var Taxi = /*#__PURE__*/function () {
         }, _callee, this);
       }));
 
-      function initEventlisteners() {
+      function initEventlisteners(_x) {
         return _initEventlisteners.apply(this, arguments);
       }
 
@@ -1351,6 +1361,23 @@ var Taxi = /*#__PURE__*/function () {
           break;
       }
     }
+    /**
+     *
+     * @param {Event} e
+     */
+
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      var isChildNode = e.path.includes(this.taxi) && e.path[0] !== this.taxi;
+      var isInputNode = e.path.includes(this.input);
+      if (isChildNode) return;
+      if (isInputNode) return; // this will lead to problems due to binding to document.
+      // TODO Idea: dispose of eventlistener on return
+      // TODO Idea: and add on focusIn
+
+      this.taxi.style.visibility = "hidden";
+    }
     /* Public Functionality */
 
     /* Option Setters */
@@ -1469,7 +1496,11 @@ _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Tax
   query: Taxi.Query.strict,
   toHtml: Taxi.ToHtml.classic,
   minChar: 1,
-  showWarnings: true
+  showWarnings: true,
+  plugins: [],
+  devOps: {
+    closeOnClickAway: false
+  }
 }));
 
 _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_6___default()(Taxi, "TaxiOptionsRecommended", Object.freeze({

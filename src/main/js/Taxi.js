@@ -9,6 +9,13 @@
  * @property {toHtml} toHtml - html mapping method
  * @property {number} minChar - minimum amount of avaialble characters to show auto-complete
  * @property {boolean} showWarnings - true by default
+ * @property {array} plugins - array of plugins
+ * @property {devOps} dev - developer options & experimental features
+ */
+
+/**
+ * @typedef {Object} devOps
+ * @property {boolean} closeOnClickAway - hides auto-complete options on click away
  */
 
 /**
@@ -81,18 +88,23 @@ class Taxi {
     },
   });
 
-  // /**
-  //  *
-  //  * Default TaxiOptions, to be used incase of none given.
-  //  * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
-  //  * @property {query} query - {@link taxiquery}
-  //  */
+  /**
+   *
+   * Default TaxiOptions, to be used incase of none given.
+   * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
+   * @property {query} query - {@link taxiquery}
+   * @property {devOps} devOps - experimental features
+   */
   static TaxiOptionsDefaults = Object.freeze({
     data: ["Volkwagen", "Mercedes", "Daimler"],
     query: Taxi.Query.strict,
     toHtml: Taxi.ToHtml.classic,
     minChar: 1,
     showWarnings: true,
+    plugins: [],
+    devOps: {
+      closeOnClickAway: false,
+    },
   });
 
   static TaxiOptionsRecommended = Object.freeze({
@@ -123,7 +135,7 @@ class Taxi {
     this.setToHtml = this.setToHtml.bind(this);
 
     /* Initialization */
-    this.initEventlisteners();
+    this.initEventlisteners(this.options.devOps);
   }
 
   /**
@@ -160,21 +172,20 @@ class Taxi {
 
   /**
    * Initializes eventlisteners.
+   * @param {devOps} devOps
    * @returns {void}
    */
-  async initEventlisteners() {
+  async initEventlisteners(devOps) {
+    const { closeOnClickAway } = devOps;
+
     this.input.addEventListener("keydown", (e) => this.handleKeyDown(e));
     this.input.addEventListener("keyup", (e) => this.handleKeyUp(e));
-    this.input.addEventListener("focusin", (e) => this.taxi.style.visibility = "visible")
-    // this.input.addEventListener("focusout", (e) => {
-    //   const $nodeAtPointer = e.explicitOriginalTarget;
-    //   const isChild = this.taxi.contains($nodeAtPointer) && this.taxi !== $nodeAtPointer;
-
-    //   if(isChild) return; 
-      
-    //   this.taxi.style.visibility = "hidden";
-      
-    // })
+    closeOnClickAway &&
+      document.addEventListener("click", (e) => this.handleClick(e));
+    this.input.addEventListener(
+      "focusin",
+      (e) => (this.taxi.style.visibility = "visible")
+    );
   }
 
   /**
@@ -274,6 +285,22 @@ class Taxi {
     }
   }
 
+  /**
+   *
+   * @param {Event} e
+   */
+  handleClick(e) {
+    const isChildNode = e.path.includes(this.taxi) && e.path[0] !== this.taxi;
+    const isInputNode = e.path.includes(this.input);
+    if (isChildNode) return;
+    if (isInputNode) return;
+    // this will lead to problems due to binding to document.
+    // TODO Idea: dispose of eventlistener on return
+    // TODO Idea: and add on focusIn
+
+    this.taxi.style.visibility = "hidden";
+  }
+
   /* Public Functionality */
   /* Option Setters */
 
@@ -333,9 +360,7 @@ class Taxi {
       minChar > Taxi.TaxiOptionsRecommended.minChar
     ) {
       console.warn(
-        `You are not using the recommended range of minimum characters.\nRecommended range: 0 - ${
-          Taxi.TaxiOptionsRecommended.minChar
-        }`
+        `You are not using the recommended range of minimum characters.\nRecommended range: 0 - ${Taxi.TaxiOptionsRecommended.minChar}`
       );
     }
     this.options.minChar = minChar;
