@@ -32,8 +32,15 @@ Via UNPKG
 ---------
 
 ```html 
-<script src="https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.8/js/Taxi.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.8/css/taxi.css">;
+<script src="https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.8/dist/web/js/Taxi.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.8/dist/css/taxi.css">;
+```
+
+For plugins
+---------
+```js
+  import Plugin from "https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.8/src/main/js/plugin/Plugin.js";
+  import EventPlugin from "https://unpkg.com/@rbrtbrnschn/taxi.js@1.1.8/src/main/js/plugin/EventPlugin.js";
 ```
 
 Add scripts to the header
