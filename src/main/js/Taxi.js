@@ -1,7 +1,7 @@
 /* GLOBALS */
-// let __AUTO_INITIALIZE = false; //@deprecated
 import KeyHandler from "./keyPress";
 import ModuleFactory from "./plugin";
+import WarnerBrothers from "./utils/warn";
 
 /**
  * TaxiOptions interface, outlining all available options to give in, when instantiating a new {@link Taxi} instance.
@@ -12,12 +12,7 @@ import ModuleFactory from "./plugin";
  * @property {number} minChar - minimum amount of avaialble characters to show auto-complete
  * @property {boolean} showWarnings - true by default
  * @property {array} plugins - array of plugins
- * @property {devOps} dev - developer options & experimental features
- */
-
-/**
- * @typedef {Object} devOps
- * @property {boolean} closeOnClickAway - hides auto-complete options on click away
+ * @property {closeOnClickAway} closeOnClickAway - hide auto-complete options on click away
  */
 
 /**
@@ -95,7 +90,7 @@ class Taxi {
    * Default TaxiOptions, to be used incase of none given.
    * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
    * @property {query} query - {@link taxiquery}
-   * @property {devOps} devOps - experimental features
+   * @property {boolean} closeOnClickAway - hides auto-complete options on click-away
    */
   static TaxiOptionsDefaults = Object.freeze({
     data: ["Volkwagen", "Mercedes", "Daimler"],
@@ -104,9 +99,7 @@ class Taxi {
     minChar: 1,
     showWarnings: true,
     plugins: [],
-    devOps: {
-      closeOnClickAway: false,
-    },
+    closeOnClickAway: false,
   });
 
   static TaxiOptionsRecommended = Object.freeze({
@@ -126,10 +119,6 @@ class Taxi {
     /* Further property initialization */
     this.input.taxi = this;
     this.actionCodes = [40, 38, 9, 13];
-    this.modules = {
-      core: new Map(),
-      thirdParty: new Map(),
-    };
 
     /* Validate options */
     this.injectTaxiOptions(options);
@@ -137,9 +126,18 @@ class Taxi {
 
     /* Public Methods */
     this.setData = this.setData.bind(this);
-    this.setFilter = this.setFilter.bind(this);
     this.setQuery = this.setQuery.bind(this);
     this.setToHtml = this.setToHtml.bind(this);
+    this.setMinChar = this.setMinChar.bind(this);
+    this.setShowWarnings = this.setShowWarnings.bind(this);
+
+    this.getData = this.getData.bind(this);
+    this.getQuery = this.getQuery.bind(this);
+    this.getToHtml = this.getToHtml.bind(this);
+    this.getMinChar = this.getMinChar.bind(this);
+    this.getCloseOnClickAway = this.getCloseOnClickAway.bind(this);
+    this.getPlugins = this.getPlugins.bind(this);
+
 
     /* Initialization */
     this.initEventlisteners(this.options.devOps);
@@ -190,8 +188,8 @@ class Taxi {
    * @param {devOps} devOps
    * @returns {void}
    */
-  async initEventlisteners(devOps) {
-    const { closeOnClickAway } = devOps;
+  async initEventlisteners() {
+    const { closeOnClickAway } = this.options;
 
     this.input.addEventListener("keydown", (e) => this.handleKeyDown(e));
     this.input.addEventListener("keyup", (e) => this.handleKeyUp(e));
@@ -291,24 +289,10 @@ class Taxi {
    * @param {Array} data
    */
   setData(data) {
-    if (
-      this.options.showWarnings &&
-      data.length &&
-      data[0].length == undefined
-    ) {
-      console.warn(
-        "When using objects-like, be sure to it's unwise to use default `options.toHtml` and `options.query` "
-      );
-    }
+    const validation = this.options.showWarnings && data.length && data[0].length == undefined;
+    WarnerBrothers.warn(WarnerBrothers.Warnings.dataNonPrimitiveType(), validation)
+    
     this.options.data = data;
-  }
-
-  /**
-   * Sets {@link TaxiOptions} filter.
-   * @param {(value: String,entry) => boolean} filter - filter method
-   */
-  setFilter(filter) {
-    this.options.filter = filter;
   }
 
   /**
@@ -317,10 +301,8 @@ class Taxi {
    */
   setQuery(query) {
     const isCustom = !(Object.values(Taxi.Query).indexOf(query) >= 0);
-    if (this.options.showWarnings && isCustom)
-      console.warn(
-        `You are using a custom query.\nTo use our selection of recommended query options, be sure to checkout the documentation here: https://taxiJs.rbrtbrnschn.dev.`
-      );
+    WarnerBrothers.warn(WarnerBrothers.Warnings.queryCustom() + WarnerBrothers.Warnings.docs(), isCustom);
+
     this.options.query = query;
   }
 
@@ -337,14 +319,9 @@ class Taxi {
    * @param {int} minChar
    */
   setMinChar(minChar) {
-    if (
-      this.options.showWarnings &&
-      minChar > Taxi.TaxiOptionsRecommended.minChar
-    ) {
-      console.warn(
-        `You are not using the recommended range of minimum characters.\nRecommended range: 0 - ${Taxi.TaxiOptionsRecommended.minChar}`
-      );
-    }
+    const validation = minChar > Taxi.TaxiOptionsRecommended.minChar
+    WarnerBrothers.warn(WarnerBrothers.Warnings.minCharUnrecommended(Taxi.TaxiOptionsRecommended.minChar), validation);
+
     this.options.minChar = minChar;
   }
 
@@ -352,10 +329,61 @@ class Taxi {
    * Sets {@link TaxiOptions} showWarnings property.
    * @param {boolean} boo
    */
-  setWarnings(boo) {
-    if (typeof boo == Boolean) {
-      this.options.showWarnings = boo;
-    }
+  setShowWarnings(boo) {
+      WarnerBrothers.setShowWarning(boo);
+  }
+
+  /* Getters */
+  /**
+   * Get data.
+   */
+  getData(){
+    return this.options.data;
+  }
+
+  /**
+   * Get minChar.
+   */
+  getMinChar(){
+    return this.options.minChar;
+  }
+
+  /**
+   * Get Query. May be defect.
+   */
+  getQuery(){
+    return this.options.query;
+  }
+
+  /**
+   * Get ToHtml. May be defect.
+   */
+  getToHtml(){
+    return this.options.toHtml;
+  }
+
+  /**
+   * Get plugins.
+   */
+  getPlugins(){
+    return this.options.plugins;
+  }
+
+  /**
+   * Get closeOnClickAway.
+   */
+  getCloseOnClickAway(){
+    return this.options.closeOnClickAway;
+  }
+
+  /* Injections */
+
+  /**
+   * Inject new Plugin.
+   * @param {Plugin} plugin 
+   */
+  injectPlugin(plugin) {
+    ModuleFactory.register(plugin);
   }
 }
 

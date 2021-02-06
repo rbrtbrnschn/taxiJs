@@ -248,29 +248,6 @@ module.exports = _toConsumableArray;
 
 /***/ }),
 
-/***/ 8:
-/***/ ((module) => {
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-
-/***/ }),
-
 /***/ 379:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
@@ -1113,9 +1090,6 @@ try {
 
 // UNUSED EXPORTS: default
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
-var helpers_typeof = __webpack_require__(8);
-var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
 var regenerator = __webpack_require__(757);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
@@ -1390,8 +1364,83 @@ var KeyHandler = /*#__PURE__*/function () {
 }();
 
 /* harmony default export */ const keyPress = (new KeyHandler(keys));
-;// CONCATENATED MODULE: ./src/main/js/Taxi.js
+;// CONCATENATED MODULE: ./src/main/js/utils/warn.js
 
+
+
+var WarnerBrothers = /*#__PURE__*/function () {
+  function WarnerBrothers(options) {
+    classCallCheck_default()(this, WarnerBrothers);
+
+    this.showWarnings = true;
+    this.Warnings = Object.freeze({
+      "minCharUnrecommended": function minCharUnrecommended(maxRange) {
+        return "You are not using the recommended range of minimum characters.\nRecommended range: 0 - ".concat(maxRange);
+      },
+      "dataNonPrimitiveType": function dataNonPrimitiveType() {
+        return "When using object-like data structures, it's unwise to use default `options.toHtml` and `options.query` as they expect array[string|number|boolean].";
+      },
+      "queryCustom": function queryCustom() {
+        return "You are using a custom query.\nWe already have builtin query options to take away the hassle.";
+      },
+      "docs": function docs() {
+        var ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+        return "\nBe sure to checkout the documentation here: https://taxiJs.rbrtbrnschn.dev/docs#".concat(ref);
+      }
+    });
+    this.disable = this.enable.bind(this);
+    this.enable = this.disable.bind(this);
+  }
+  /**
+   * Disables warnings.
+   */
+
+
+  createClass_default()(WarnerBrothers, [{
+    key: "disable",
+    value: function disable() {
+      this.setShowWarning(false);
+    }
+    /**
+     * Enables Warnings.
+     */
+
+  }, {
+    key: "enable",
+    value: function enable() {
+      this.setShowWarning(true);
+    }
+    /**
+     * WarnerBrothers be warning.
+     * @param {string} msg 
+     * @param {boolean} validation 
+     */
+
+  }, {
+    key: "warn",
+    value: function warn(msg) {
+      var validation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      this.showWarnings && validation && console.warn(msg);
+    }
+    /* Getters */
+
+    /**
+     * Sets showWarnings.
+     * @param {boolean} boo 
+     */
+
+  }, {
+    key: "setShowWarning",
+    value: function setShowWarning(boo) {
+      this.showWarnings = boo ? true : false;
+    }
+  }]);
+
+  return WarnerBrothers;
+}();
+
+/* harmony default export */ const warn = (new WarnerBrothers());
+;// CONCATENATED MODULE: ./src/main/js/Taxi.js
 
 
 
@@ -1404,7 +1453,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { defineProperty_default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 /* GLOBALS */
-// let __AUTO_INITIALIZE = false; //@deprecated
+
 
 
 /**
@@ -1416,12 +1465,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
  * @property {number} minChar - minimum amount of avaialble characters to show auto-complete
  * @property {boolean} showWarnings - true by default
  * @property {array} plugins - array of plugins
- * @property {devOps} dev - developer options & experimental features
- */
-
-/**
- * @typedef {Object} devOps
- * @property {boolean} closeOnClickAway - hides auto-complete options on click away
+ * @property {closeOnClickAway} closeOnClickAway - hide auto-complete options on click away
  */
 
 /**
@@ -1470,7 +1514,7 @@ var Taxi = /*#__PURE__*/function () {
    * Default TaxiOptions, to be used incase of none given.
    * @property {*} data - ["Volkwagen", "Mercedes", "Daimler"]
    * @property {query} query - {@link taxiquery}
-   * @property {devOps} devOps - experimental features
+   * @property {boolean} closeOnClickAway - hides auto-complete options on click-away
    */
 
   /**
@@ -1488,10 +1532,6 @@ var Taxi = /*#__PURE__*/function () {
 
     this.input.taxi = this;
     this.actionCodes = [40, 38, 9, 13];
-    this.modules = {
-      core: new Map(),
-      thirdParty: new Map()
-    };
     /* Validate options */
 
     this.injectTaxiOptions(options);
@@ -1499,9 +1539,16 @@ var Taxi = /*#__PURE__*/function () {
     /* Public Methods */
 
     this.setData = this.setData.bind(this);
-    this.setFilter = this.setFilter.bind(this);
     this.setQuery = this.setQuery.bind(this);
     this.setToHtml = this.setToHtml.bind(this);
+    this.setMinChar = this.setMinChar.bind(this);
+    this.setShowWarnings = this.setShowWarnings.bind(this);
+    this.getData = this.getData.bind(this);
+    this.getQuery = this.getQuery.bind(this);
+    this.getToHtml = this.getToHtml.bind(this);
+    this.getMinChar = this.getMinChar.bind(this);
+    this.getCloseOnClickAway = this.getCloseOnClickAway.bind(this);
+    this.getPlugins = this.getPlugins.bind(this);
     /* Initialization */
 
     this.initEventlisteners(this.options.devOps);
@@ -1568,7 +1615,7 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "initEventlisteners",
     value: function () {
-      var _initEventlisteners = asyncToGenerator_default()( /*#__PURE__*/regenerator_default().mark(function _callee(devOps) {
+      var _initEventlisteners = asyncToGenerator_default()( /*#__PURE__*/regenerator_default().mark(function _callee() {
         var _this2 = this;
 
         var closeOnClickAway;
@@ -1576,7 +1623,7 @@ var Taxi = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                closeOnClickAway = devOps.closeOnClickAway;
+                closeOnClickAway = this.options.closeOnClickAway;
                 this.input.addEventListener("keydown", function (e) {
                   return _this2.handleKeyDown(e);
                 });
@@ -1598,7 +1645,7 @@ var Taxi = /*#__PURE__*/function () {
         }, _callee, this);
       }));
 
-      function initEventlisteners(_x) {
+      function initEventlisteners() {
         return _initEventlisteners.apply(this, arguments);
       }
 
@@ -1712,21 +1759,9 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "setData",
     value: function setData(data) {
-      if (this.options.showWarnings && data.length && data[0].length == undefined) {
-        console.warn("When using objects-like, be sure to it's unwise to use default `options.toHtml` and `options.query` ");
-      }
-
+      var validation = this.options.showWarnings && data.length && data[0].length == undefined;
+      warn.warn(warn.Warnings.dataNonPrimitiveType(), validation);
       this.options.data = data;
-    }
-    /**
-     * Sets {@link TaxiOptions} filter.
-     * @param {(value: String,entry) => boolean} filter - filter method
-     */
-
-  }, {
-    key: "setFilter",
-    value: function setFilter(filter) {
-      this.options.filter = filter;
     }
     /**
      * Sets {@link TaxiOptions} query.
@@ -1737,7 +1772,7 @@ var Taxi = /*#__PURE__*/function () {
     key: "setQuery",
     value: function setQuery(query) {
       var isCustom = !(Object.values(Taxi.Query).indexOf(query) >= 0);
-      if (this.options.showWarnings && isCustom) console.warn("You are using a custom query.\nTo use our selection of recommended query options, be sure to checkout the documentation here: https://taxiJs.rbrtbrnschn.dev.");
+      warn.warn(warn.Warnings.queryCustom() + warn.Warnings.docs(), isCustom);
       this.options.query = query;
     }
     /**
@@ -1758,10 +1793,8 @@ var Taxi = /*#__PURE__*/function () {
   }, {
     key: "setMinChar",
     value: function setMinChar(minChar) {
-      if (this.options.showWarnings && minChar > Taxi.TaxiOptionsRecommended.minChar) {
-        console.warn("You are not using the recommended range of minimum characters.\nRecommended range: 0 - ".concat(Taxi.TaxiOptionsRecommended.minChar));
-      }
-
+      var validation = minChar > Taxi.TaxiOptionsRecommended.minChar;
+      warn.warn(warn.Warnings.minCharUnrecommended(Taxi.TaxiOptionsRecommended.minChar), validation);
       this.options.minChar = minChar;
     }
     /**
@@ -1770,11 +1803,77 @@ var Taxi = /*#__PURE__*/function () {
      */
 
   }, {
-    key: "setWarnings",
-    value: function setWarnings(boo) {
-      if (typeof_default()(boo) == Boolean) {
-        this.options.showWarnings = boo;
-      }
+    key: "setShowWarnings",
+    value: function setShowWarnings(boo) {
+      warn.setShowWarning(boo);
+    }
+    /* Getters */
+
+    /**
+     * Get data.
+     */
+
+  }, {
+    key: "getData",
+    value: function getData() {
+      return this.options.data;
+    }
+    /**
+     * Get minChar.
+     */
+
+  }, {
+    key: "getMinChar",
+    value: function getMinChar() {
+      return this.options.minChar;
+    }
+    /**
+     * Get Query. May be defect.
+     */
+
+  }, {
+    key: "getQuery",
+    value: function getQuery() {
+      return this.options.query;
+    }
+    /**
+     * Get ToHtml. May be defect.
+     */
+
+  }, {
+    key: "getToHtml",
+    value: function getToHtml() {
+      return this.options.toHtml;
+    }
+    /**
+     * Get plugins.
+     */
+
+  }, {
+    key: "getPlugins",
+    value: function getPlugins() {
+      return this.options.plugins;
+    }
+    /**
+     * Get closeOnClickAway.
+     */
+
+  }, {
+    key: "getCloseOnClickAway",
+    value: function getCloseOnClickAway() {
+      return this.options.closeOnClickAway;
+    }
+    /* Injections */
+
+    /**
+     * Inject new Plugin.
+     * @param {Plugin} plugin 
+     */
+
+  }, {
+    key: "injectPlugin",
+    value: function injectPlugin(plugin) {
+      js_plugin.register(plugin);
     }
   }]);
 
@@ -1820,9 +1919,7 @@ defineProperty_default()(Taxi, "TaxiOptionsDefaults", Object.freeze({
   minChar: 1,
   showWarnings: true,
   plugins: [],
-  devOps: {
-    closeOnClickAway: false
-  }
+  closeOnClickAway: false
 }));
 
 defineProperty_default()(Taxi, "TaxiOptionsRecommended", Object.freeze({
