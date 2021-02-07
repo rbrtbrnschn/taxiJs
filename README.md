@@ -15,6 +15,7 @@ issues](https://img.shields.io/github/issues-closed-raw/rbrtbrnschn/taxiJs?color
 
 ![width=100%](./assets/img/readme/taxijs.gif)
 
+
 To visit the demo page, please visit <https://taxijs.rbrtbrnschn.dev> .
 
 CDN:
